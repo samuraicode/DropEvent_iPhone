@@ -1,0 +1,67 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXGroup section */
+		3F1391C91C1A91C300FF49F7 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		3F1391CA1C1A91C300FF49F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+			};
+			buildConfigurationList = 3F1391CD1C1A91C300FF49F7 /* Build configuration list for PBXProject "DropEvent" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3F1391C91C1A91C300FF49F7;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		3F1391CE1C1A91C300FF49F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		3F1391CF1C1A91C300FF49F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F1391CD1C1A91C300FF49F7 /* Build configuration list for PBXProject "DropEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F1391CE1C1A91C300FF49F7 /* Debug */,
+				3F1391CF1C1A91C300FF49F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F1391CA1C1A91C300FF49F7 /* Project object */;
+}
