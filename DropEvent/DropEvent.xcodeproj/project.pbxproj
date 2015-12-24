@@ -14,6 +14,16 @@
 		3F94B71D1C1A9B0C00A99677 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F94B71B1C1A9B0C00A99677 /* LaunchScreen.storyboard */; };
 		3F94B7281C1A9B0C00A99677 /* DropEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94B7271C1A9B0C00A99677 /* DropEventTests.swift */; };
 		3F94B7331C1A9B0C00A99677 /* DropEventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94B7321C1A9B0C00A99677 /* DropEventUITests.swift */; };
+		8824711F1C2C97D60035C12C /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824711E1C2C97D60035C12C /* EventModel.swift */; };
+		882471221C2C98330035C12C /* EventFolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882471211C2C98330035C12C /* EventFolderModel.swift */; };
+		882471241C2C98440035C12C /* EventPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882471231C2C98440035C12C /* EventPhotoModel.swift */; };
+		8824712B1C2C99E60035C12C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471251C2C99E60035C12C /* Alamofire.framework */; };
+		8824712C1C2C99E60035C12C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471261C2C99E60035C12C /* Moya.framework */; };
+		8824712D1C2C99E60035C12C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471271C2C99E60035C12C /* RxCocoa.framework */; };
+		8824712E1C2C99E60035C12C /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471281C2C99E60035C12C /* RxMoya.framework */; };
+		8824712F1C2C99E60035C12C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471291C2C99E60035C12C /* RxSwift.framework */; };
+		882471301C2C99E60035C12C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8824712A1C2C99E60035C12C /* SwiftyJSON.framework */; };
+		882471361C2CB0400035C12C /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882471351C2CB0400035C12C /* EventAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +57,16 @@
 		3F94B72E1C1A9B0C00A99677 /* DropEventUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropEventUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94B7321C1A9B0C00A99677 /* DropEventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropEventUITests.swift; sourceTree = "<group>"; };
 		3F94B7341C1A9B0C00A99677 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8824711E1C2C97D60035C12C /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		882471211C2C98330035C12C /* EventFolderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFolderModel.swift; sourceTree = "<group>"; };
+		882471231C2C98440035C12C /* EventPhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPhotoModel.swift; sourceTree = "<group>"; };
+		882471251C2C99E60035C12C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		882471261C2C99E60035C12C /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
+		882471271C2C99E60035C12C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		882471281C2C99E60035C12C /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
+		882471291C2C99E60035C12C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		8824712A1C2C99E60035C12C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		882471351C2CB0400035C12C /* EventAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8824712B1C2C99E60035C12C /* Alamofire.framework in Frameworks */,
+				8824712C1C2C99E60035C12C /* Moya.framework in Frameworks */,
+				8824712D1C2C99E60035C12C /* RxCocoa.framework in Frameworks */,
+				8824712E1C2C99E60035C12C /* RxMoya.framework in Frameworks */,
+				8824712F1C2C99E60035C12C /* RxSwift.framework in Frameworks */,
+				882471301C2C99E60035C12C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +106,7 @@
 				3F94B7111C1A9B0C00A99677 /* DropEvent */,
 				3F94B7261C1A9B0C00A99677 /* DropEventTests */,
 				3F94B7311C1A9B0C00A99677 /* DropEventUITests */,
+				882471311C2C99EE0035C12C /* Frameworks */,
 				3F94B7101C1A9B0C00A99677 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +124,9 @@
 		3F94B7111C1A9B0C00A99677 /* DropEvent */ = {
 			isa = PBXGroup;
 			children = (
+				882471341C2CAFCB0035C12C /* API */,
+				8824711B1C2C937B0035C12C /* ViewControllers */,
+				8824711A1C2C936F0035C12C /* Models */,
 				3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */,
 				3F94B7141C1A9B0C00A99677 /* ViewController.swift */,
 				3F94B7161C1A9B0C00A99677 /* Main.storyboard */,
@@ -125,6 +155,60 @@
 			path = DropEventUITests;
 			sourceTree = "<group>";
 		};
+		8824711A1C2C936F0035C12C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				882471331C2C9ABD0035C12C /* User Models */,
+				882471201C2C98200035C12C /* Event Models */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		8824711B1C2C937B0035C12C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		882471201C2C98200035C12C /* Event Models */ = {
+			isa = PBXGroup;
+			children = (
+				8824711E1C2C97D60035C12C /* EventModel.swift */,
+				882471211C2C98330035C12C /* EventFolderModel.swift */,
+				882471231C2C98440035C12C /* EventPhotoModel.swift */,
+			);
+			name = "Event Models";
+			sourceTree = "<group>";
+		};
+		882471311C2C99EE0035C12C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				882471251C2C99E60035C12C /* Alamofire.framework */,
+				882471261C2C99E60035C12C /* Moya.framework */,
+				882471271C2C99E60035C12C /* RxCocoa.framework */,
+				882471281C2C99E60035C12C /* RxMoya.framework */,
+				882471291C2C99E60035C12C /* RxSwift.framework */,
+				8824712A1C2C99E60035C12C /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		882471331C2C9ABD0035C12C /* User Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "User Models";
+			sourceTree = "<group>";
+		};
+		882471341C2CAFCB0035C12C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				882471351C2CB0400035C12C /* EventAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +219,7 @@
 				3F94B70B1C1A9B0C00A99677 /* Sources */,
 				3F94B70C1C1A9B0C00A99677 /* Frameworks */,
 				3F94B70D1C1A9B0C00A99677 /* Resources */,
+				882471321C2C9A350035C12C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -251,12 +336,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		882471321C2C9A350035C12C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxMoya.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3F94B70B1C1A9B0C00A99677 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				882471221C2C98330035C12C /* EventFolderModel.swift in Sources */,
 				3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */,
+				882471241C2C98440035C12C /* EventPhotoModel.swift in Sources */,
+				882471361C2CB0400035C12C /* EventAPI.swift in Sources */,
+				8824711F1C2C97D60035C12C /* EventModel.swift in Sources */,
 				3F94B7131C1A9B0C00A99677 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,7 +510,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DropEvent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuraicode.DropEvent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +526,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DropEvent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuraicode.DropEvent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +605,7 @@
 				3F94B7391C1A9B0C00A99677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F94B73A1C1A9B0C00A99677 /* Build configuration list for PBXNativeTarget "DropEventTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +614,7 @@
 				3F94B73C1C1A9B0C00A99677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F94B73D1C1A9B0C00A99677 /* Build configuration list for PBXNativeTarget "DropEventUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +623,7 @@
 				3F94B73F1C1A9B0C00A99677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
