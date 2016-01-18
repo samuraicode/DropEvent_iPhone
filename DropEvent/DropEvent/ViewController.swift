@@ -8,16 +8,25 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let api = EventAPI()
-        api.getEvent().subscribeNext { event in
+        api.getEvent().subscribeNext {[weak self] event in
+//            self?.image.kf_setImageWithURL(event.thumbnailURL)
+            self?.image.kf_setImageWithURL(event.thumbnailURL, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+                
+            })
             print(event.name)
-        }
+        }.addDisposableTo(disposeBag)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

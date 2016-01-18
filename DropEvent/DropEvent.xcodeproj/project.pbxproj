@@ -24,6 +24,12 @@
 		8824712F1C2C99E60035C12C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471291C2C99E60035C12C /* RxSwift.framework */; };
 		882471301C2C99E60035C12C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8824712A1C2C99E60035C12C /* SwiftyJSON.framework */; };
 		882471361C2CB0400035C12C /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882471351C2CB0400035C12C /* EventAPI.swift */; };
+		8850FC3B1C475D8B00BBF33F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3A1C475D8B00BBF33F /* UserModel.swift */; };
+		8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3D1C475DB800BBF33F /* LoginViewController.swift */; };
+		8850FC401C475DC200BBF33F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */; };
+		8850FC431C489CB900BBF33F /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC421C489CB900BBF33F /* LoginAPI.swift */; };
+		88E421731C2D064D00D4C626 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E421721C2D064D00D4C626 /* Kingfisher.framework */; };
+		88FEC5181C4C4B6B002FB58E /* DropEventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FEC5171C4C4B6B002FB58E /* DropEventAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +73,12 @@
 		882471291C2C99E60035C12C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		8824712A1C2C99E60035C12C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		882471351C2CB0400035C12C /* EventAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
+		8850FC3A1C475D8B00BBF33F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		8850FC3D1C475DB800BBF33F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8850FC421C489CB900BBF33F /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		88E421721C2D064D00D4C626 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		88FEC5171C4C4B6B002FB58E /* DropEventAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropEventAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E421731C2D064D00D4C626 /* Kingfisher.framework in Frameworks */,
 				8824712B1C2C99E60035C12C /* Alamofire.framework in Frameworks */,
 				8824712C1C2C99E60035C12C /* Moya.framework in Frameworks */,
 				8824712D1C2C99E60035C12C /* RxCocoa.framework in Frameworks */,
@@ -167,6 +180,7 @@
 		8824711B1C2C937B0035C12C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8850FC3C1C475D9F00BBF33F /* Login */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +198,7 @@
 		882471311C2C99EE0035C12C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88E421721C2D064D00D4C626 /* Kingfisher.framework */,
 				882471251C2C99E60035C12C /* Alamofire.framework */,
 				882471261C2C99E60035C12C /* Moya.framework */,
 				882471271C2C99E60035C12C /* RxCocoa.framework */,
@@ -197,6 +212,7 @@
 		882471331C2C9ABD0035C12C /* User Models */ = {
 			isa = PBXGroup;
 			children = (
+				8850FC3A1C475D8B00BBF33F /* UserModel.swift */,
 			);
 			name = "User Models";
 			sourceTree = "<group>";
@@ -205,8 +221,19 @@
 			isa = PBXGroup;
 			children = (
 				882471351C2CB0400035C12C /* EventAPI.swift */,
+				8850FC421C489CB900BBF33F /* LoginAPI.swift */,
+				88FEC5171C4C4B6B002FB58E /* DropEventAPI.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		8850FC3C1C475D9F00BBF33F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */,
+				8850FC3D1C475DB800BBF33F /* LoginViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +376,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxMoya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			outputPaths = (
 			);
@@ -364,11 +392,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				882471221C2C98330035C12C /* EventFolderModel.swift in Sources */,
+				88FEC5181C4C4B6B002FB58E /* DropEventAPI.swift in Sources */,
+				8850FC3B1C475D8B00BBF33F /* UserModel.swift in Sources */,
+				8850FC431C489CB900BBF33F /* LoginAPI.swift in Sources */,
 				3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */,
 				882471241C2C98440035C12C /* EventPhotoModel.swift in Sources */,
+				8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */,
 				882471361C2CB0400035C12C /* EventAPI.swift in Sources */,
 				8824711F1C2C97D60035C12C /* EventModel.swift in Sources */,
 				3F94B7131C1A9B0C00A99677 /* AppDelegate.swift in Sources */,
+				8850FC401C475DC200BBF33F /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
