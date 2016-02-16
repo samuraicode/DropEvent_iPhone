@@ -28,8 +28,17 @@
 		8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3D1C475DB800BBF33F /* LoginViewController.swift */; };
 		8850FC401C475DC200BBF33F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */; };
 		8850FC431C489CB900BBF33F /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC421C489CB900BBF33F /* LoginAPI.swift */; };
+		88B28BCD1C69979400DB8C30 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */; };
+		88B28BD31C699A8500DB8C30 /* SearchEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD21C699A8500DB8C30 /* SearchEventsTableViewController.swift */; };
+		88B28BD51C699A9A00DB8C30 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */; };
+		88B28BD71C699AA700DB8C30 /* SearchEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD61C699AA700DB8C30 /* SearchEventsViewModel.swift */; };
+		88B28BDA1C699BC100DB8C30 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD91C699BC100DB8C30 /* SearchResultTableViewCell.swift */; };
 		88E421731C2D064D00D4C626 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E421721C2D064D00D4C626 /* Kingfisher.framework */; };
 		88FEC5181C4C4B6B002FB58E /* DropEventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FEC5171C4C4B6B002FB58E /* DropEventAPI.swift */; };
+		88FFFCDC1C4F316F00515B90 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFFCDB1C4F316F00515B90 /* CoreDataStack.swift */; };
+		88FFFCDF1C4F36EC00515B90 /* DropEventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88FFFCDD1C4F36EC00515B90 /* DropEventModel.xcdatamodeld */; };
+		88FFFCEC1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFFCEA1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift */; };
+		88FFFCED1C4F419B00515B90 /* UserDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFFCEB1C4F419B00515B90 /* UserDBModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,8 +86,17 @@
 		8850FC3D1C475DB800BBF33F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8850FC421C489CB900BBF33F /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		88B28BD21C699A8500DB8C30 /* SearchEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsTableViewController.swift; sourceTree = "<group>"; };
+		88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
+		88B28BD61C699AA700DB8C30 /* SearchEventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsViewModel.swift; sourceTree = "<group>"; };
+		88B28BD91C699BC100DB8C30 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		88E421721C2D064D00D4C626 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		88FEC5171C4C4B6B002FB58E /* DropEventAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropEventAPI.swift; sourceTree = "<group>"; };
+		88FFFCDB1C4F316F00515B90 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		88FFFCDE1C4F36EC00515B90 /* DropEventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DropEventModel.xcdatamodel; sourceTree = "<group>"; };
+		88FFFCEA1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDBModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88FFFCEB1C4F419B00515B90 /* UserDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +164,8 @@
 				3F94B7191C1A9B0C00A99677 /* Assets.xcassets */,
 				3F94B71B1C1A9B0C00A99677 /* LaunchScreen.storyboard */,
 				3F94B71E1C1A9B0C00A99677 /* Info.plist */,
+				88FFFCDB1C4F316F00515B90 /* CoreDataStack.swift */,
+				88FFFCDD1C4F36EC00515B90 /* DropEventModel.xcdatamodeld */,
 			);
 			path = DropEvent;
 			sourceTree = "<group>";
@@ -180,6 +200,7 @@
 		8824711B1C2C937B0035C12C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				88B28BC91C69975600DB8C30 /* Events */,
 				8850FC3C1C475D9F00BBF33F /* Login */,
 			);
 			name = ViewControllers;
@@ -213,6 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				8850FC3A1C475D8B00BBF33F /* UserModel.swift */,
+				88FFFCEA1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift */,
+				88FFFCEB1C4F419B00515B90 /* UserDBModel.swift */,
 			);
 			name = "User Models";
 			sourceTree = "<group>";
@@ -234,6 +257,26 @@
 				8850FC3D1C475DB800BBF33F /* LoginViewController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		88B28BC91C69975600DB8C30 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */,
+				88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */,
+				88B28BD81C699AAF00DB8C30 /* Search Events */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		88B28BD81C699AAF00DB8C30 /* Search Events */ = {
+			isa = PBXGroup;
+			children = (
+				88B28BD61C699AA700DB8C30 /* SearchEventsViewModel.swift */,
+				88B28BD21C699A8500DB8C30 /* SearchEventsTableViewController.swift */,
+				88B28BD91C699BC100DB8C30 /* SearchResultTableViewCell.swift */,
+			);
+			name = "Search Events";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,10 +438,19 @@
 				88FEC5181C4C4B6B002FB58E /* DropEventAPI.swift in Sources */,
 				8850FC3B1C475D8B00BBF33F /* UserModel.swift in Sources */,
 				8850FC431C489CB900BBF33F /* LoginAPI.swift in Sources */,
+				88B28BD71C699AA700DB8C30 /* SearchEventsViewModel.swift in Sources */,
 				3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */,
+				88B28BDA1C699BC100DB8C30 /* SearchResultTableViewCell.swift in Sources */,
+				88FFFCDC1C4F316F00515B90 /* CoreDataStack.swift in Sources */,
+				88FFFCED1C4F419B00515B90 /* UserDBModel.swift in Sources */,
+				88FFFCEC1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift in Sources */,
+				88FFFCDF1C4F36EC00515B90 /* DropEventModel.xcdatamodeld in Sources */,
 				882471241C2C98440035C12C /* EventPhotoModel.swift in Sources */,
+				88B28BCD1C69979400DB8C30 /* EventsViewModel.swift in Sources */,
 				8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */,
 				882471361C2CB0400035C12C /* EventAPI.swift in Sources */,
+				88B28BD51C699A9A00DB8C30 /* EventsCollectionViewController.swift in Sources */,
+				88B28BD31C699A8500DB8C30 /* SearchEventsTableViewController.swift in Sources */,
 				8824711F1C2C97D60035C12C /* EventModel.swift in Sources */,
 				3F94B7131C1A9B0C00A99677 /* AppDelegate.swift in Sources */,
 				8850FC401C475DC200BBF33F /* LoginViewModel.swift in Sources */,
@@ -659,6 +711,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88FFFCDD1C4F36EC00515B90 /* DropEventModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88FFFCDE1C4F36EC00515B90 /* DropEventModel.xcdatamodel */,
+			);
+			currentVersion = 88FFFCDE1C4F36EC00515B90 /* DropEventModel.xcdatamodel */;
+			path = DropEventModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F94B7071C1A9B0C00A99677 /* Project object */;
 }

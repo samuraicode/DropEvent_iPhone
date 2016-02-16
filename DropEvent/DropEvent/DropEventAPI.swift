@@ -14,7 +14,7 @@ private let DropEventBaseURL = "https://dropevent.com/api"
 
 enum DropEvent {
     case Login(email: String, password: String)
-    case Ping
+    case Search(searchTerm: String)
 }
 
 extension DropEvent: TargetType {
@@ -24,8 +24,8 @@ extension DropEvent: TargetType {
         switch self {
         case .Login:
             return "/login"
-        case .Ping:
-            return "/ping"
+        case .Search(let searchTerm):
+            return "/search/\(searchTerm)"
         }
     }
     
@@ -54,8 +54,8 @@ extension DropEvent: TargetType {
         switch self {
         case .Login:
             return "sample".dataUsingEncoding(NSUTF8StringEncoding)!
-        case .Ping:
-            return "ping".dataUsingEncoding(NSUTF8StringEncoding)!
+        case .Search:
+            return "search".dataUsingEncoding(NSUTF8StringEncoding)!
             
         }
     }
@@ -71,6 +71,77 @@ let endpointClosure = { (target: DropEvent) -> Endpoint<DropEvent> in
     let endpoint = Endpoint<DropEvent>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
     return endpoint
 }
+
+
+enum DropEventAuth {
+    case Login(email: String, password: String)
+    case Search(searchTerm: String)
+}
+
+extension DropEventAuth: TargetType {
+    var baseURL: NSURL {return NSURL(string: DropEventBaseURL)!}
+    
+    var path: String {
+        switch self {
+        case .Login:
+            return "/login"
+        case .Search(let searchTerm):
+            return "/search/\(searchTerm)"
+        }
+    }
+    
+    var method: RxMoya.Method {
+        switch self {
+        case .Login:
+            return .POST
+        default:
+            return .GET
+        }
+    }
+    
+    var parameters: [String: AnyObject]? {
+        switch self {
+        case .Login(let email, let password):
+            return [
+                "email": email,
+                "password": password
+            ]
+        default:
+            return nil
+        }
+    }
+    
+    var sampleData: NSData {
+        switch self {
+        case .Login:
+            return "sample".dataUsingEncoding(NSUTF8StringEncoding)!
+        case .Search:
+            return "search".dataUsingEncoding(NSUTF8StringEncoding)!
+            
+        }
+    }
+}
+//
+//static func endpointsClosure<T where T: TargetType, T: ArtsyAPIType>(xAccessToken: String? = nil)(_ target: T) -> Endpoint<T> {
+//    var endpoint: Endpoint<T> = Endpoint<T>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+//    
+//    // If we were given an xAccessToken, add it
+//    if let xAccessToken = xAccessToken {
+//        endpoint = endpoint.endpointByAddingHTTPHeaderFields(["X-Access-Token": xAccessToken])
+//    }
+//    
+//    // Sign all non-XApp, non-XAuth token requests
+//    if target.addXAuth {
+//        return endpoint.endpointByAddingHTTPHeaderFields(["X-Xapp-Token": XAppToken().token ?? ""])
+//    } else {
+//        return endpoint
+//    }
+//}
+//
+//let authEndpointClosure = { (target: DropEventAuth) -> Endpoint<DropEventAuth> in
+//    let endpoint = Endpoint<DropEventAuth>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: RxMoya.ParameterEncoding.JSON, httpHeaderFields: ["x-access-token":target.parameters["sessionToken"]])
+//    return endpoint
+//}
 
 
 class NetworkLogger: PluginType {

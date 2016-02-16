@@ -37,6 +37,7 @@ class LoginViewModel {
     
     let user: UserModel
     
+    
     init(user: UserModel) {
         self.user = user
         
@@ -69,7 +70,7 @@ class LoginViewModel {
                     let json = JSON(data: response.data)
                     user.email = email
                     user.sessionToken = json["token"].string ?? ""
-                    user.save()
+//                    user.save()
                     return true
                 default:
                     return false

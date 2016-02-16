@@ -11,6 +11,7 @@ import SwiftyJSON
 
 enum SortType: String {
     case uploaded = "uploaded"
+    case dateTaken = "datetaken"
     case none = ""
 }
 
