@@ -23,11 +23,12 @@
 		8824712E1C2C99E60035C12C /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471281C2C99E60035C12C /* RxMoya.framework */; };
 		8824712F1C2C99E60035C12C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471291C2C99E60035C12C /* RxSwift.framework */; };
 		882471301C2C99E60035C12C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8824712A1C2C99E60035C12C /* SwiftyJSON.framework */; };
-		882471361C2CB0400035C12C /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882471351C2CB0400035C12C /* EventAPI.swift */; };
 		8850FC3B1C475D8B00BBF33F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3A1C475D8B00BBF33F /* UserModel.swift */; };
 		8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3D1C475DB800BBF33F /* LoginViewController.swift */; };
 		8850FC401C475DC200BBF33F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */; };
-		8850FC431C489CB900BBF33F /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850FC421C489CB900BBF33F /* LoginAPI.swift */; };
+		889554091C7C2D29006F754B /* NetWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889554081C7C2D29006F754B /* NetWorking.swift */; };
+		8895540B1C7C33CC006F754B /* RootViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895540A1C7C33CC006F754B /* RootViewManagement.swift */; };
+		8895540D1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8895540C1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift */; };
 		88B28BCD1C69979400DB8C30 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */; };
 		88B28BD31C699A8500DB8C30 /* SearchEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD21C699A8500DB8C30 /* SearchEventsTableViewController.swift */; };
 		88B28BD51C699A9A00DB8C30 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */; };
@@ -81,11 +82,12 @@
 		882471281C2C99E60035C12C /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
 		882471291C2C99E60035C12C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		8824712A1C2C99E60035C12C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		882471351C2CB0400035C12C /* EventAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
 		8850FC3A1C475D8B00BBF33F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8850FC3D1C475DB800BBF33F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8850FC3F1C475DC200BBF33F /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		8850FC421C489CB900BBF33F /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		889554081C7C2D29006F754B /* NetWorking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorking.swift; sourceTree = "<group>"; };
+		8895540A1C7C33CC006F754B /* RootViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewManagement.swift; path = ../RootViewManagement.swift; sourceTree = "<group>"; };
+		8895540C1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		88B28BD21C699A8500DB8C30 /* SearchEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsTableViewController.swift; sourceTree = "<group>"; };
 		88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				8824711B1C2C937B0035C12C /* ViewControllers */,
 				8824711A1C2C936F0035C12C /* Models */,
 				3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */,
+				8895540A1C7C33CC006F754B /* RootViewManagement.swift */,
 				3F94B7141C1A9B0C00A99677 /* ViewController.swift */,
 				3F94B7161C1A9B0C00A99677 /* Main.storyboard */,
 				3F94B7191C1A9B0C00A99677 /* Assets.xcassets */,
@@ -243,9 +246,8 @@
 		882471341C2CAFCB0035C12C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				882471351C2CB0400035C12C /* EventAPI.swift */,
-				8850FC421C489CB900BBF33F /* LoginAPI.swift */,
 				88FEC5171C4C4B6B002FB58E /* DropEventAPI.swift */,
+				889554081C7C2D29006F754B /* NetWorking.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -264,6 +266,7 @@
 			children = (
 				88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */,
 				88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */,
+				8895540C1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift */,
 				88B28BD81C699AAF00DB8C30 /* Search Events */,
 			);
 			name = Events;
@@ -436,8 +439,9 @@
 			files = (
 				882471221C2C98330035C12C /* EventFolderModel.swift in Sources */,
 				88FEC5181C4C4B6B002FB58E /* DropEventAPI.swift in Sources */,
+				889554091C7C2D29006F754B /* NetWorking.swift in Sources */,
 				8850FC3B1C475D8B00BBF33F /* UserModel.swift in Sources */,
-				8850FC431C489CB900BBF33F /* LoginAPI.swift in Sources */,
+				8895540D1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift in Sources */,
 				88B28BD71C699AA700DB8C30 /* SearchEventsViewModel.swift in Sources */,
 				3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */,
 				88B28BDA1C699BC100DB8C30 /* SearchResultTableViewCell.swift in Sources */,
@@ -446,9 +450,9 @@
 				88FFFCEC1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift in Sources */,
 				88FFFCDF1C4F36EC00515B90 /* DropEventModel.xcdatamodeld in Sources */,
 				882471241C2C98440035C12C /* EventPhotoModel.swift in Sources */,
+				8895540B1C7C33CC006F754B /* RootViewManagement.swift in Sources */,
 				88B28BCD1C69979400DB8C30 /* EventsViewModel.swift in Sources */,
 				8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */,
-				882471361C2CB0400035C12C /* EventAPI.swift in Sources */,
 				88B28BD51C699A9A00DB8C30 /* EventsCollectionViewController.swift in Sources */,
 				88B28BD31C699A8500DB8C30 /* SearchEventsTableViewController.swift in Sources */,
 				8824711F1C2C97D60035C12C /* EventModel.swift in Sources */,

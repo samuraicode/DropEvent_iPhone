@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E39d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e9M-5i-pW5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search Events Table View Controller-->
@@ -58,12 +59,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sP-8v-GQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="-1866"/>
+            <point key="canvasLocation" x="1717" y="-1866"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="fBw-vv-rDi">
             <objects>
-                <viewController id="nDB-o4-J2K" customClass="LoginViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="nDB-o4-J2K" customClass="LoginViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V6t-j9-aij"/>
                         <viewControllerLayoutGuide type="bottom" id="tO1-dj-ZuH"/>
@@ -122,7 +123,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tsf-6Z-64p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-542"/>
+            <point key="canvasLocation" x="-109" y="-714"/>
+        </scene>
+        <!--Events Collection View Controller-->
+        <scene sceneID="DL5-cZ-npa">
+            <objects>
+                <collectionViewController id="RhL-Qa-fUp" customClass="EventsCollectionViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lqm-qg-pYg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5tV-yR-zzE">
+                            <size key="itemSize" width="164" height="145"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimpleEventIdentifier" id="A5Q-V7-M7X" customClass="SimpleEventCollectionViewCell" customModule="DropEvent" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="164" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="164" height="145"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-7F-nKl">
+                                            <rect key="frame" x="8" y="62" width="148" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="leading" secondItem="A5Q-V7-M7X" secondAttribute="leadingMargin" id="GRl-Yw-hUp"/>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="trailing" secondItem="A5Q-V7-M7X" secondAttribute="trailingMargin" id="Hrq-og-u9N"/>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="centerY" secondItem="A5Q-V7-M7X" secondAttribute="centerY" id="faL-Ak-azn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="eventName" destination="ZaV-7F-nKl" id="i1o-dg-kt3"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="RhL-Qa-fUp" id="n6O-oP-Xor"/>
+                            <outlet property="delegate" destination="RhL-Qa-fUp" id="fS9-5s-XOh"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="FIP-t7-R07">
+                        <barButtonItem key="leftBarButtonItem" title="Search" id="OJI-ku-esp">
+                            <connections>
+                                <segue destination="e9M-5i-pW5" kind="presentation" id="mT2-We-e3m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cn2-R0-VXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1717" y="-1095"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -173,7 +231,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFe-uz-cGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="-1866"/>
+            <point key="canvasLocation" x="905" y="-1866"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="w7O-f2-WMr">
+            <objects>
+                <navigationController storyboardIdentifier="EventsNavCon" automaticallyAdjustsScrollViewInsets="NO" id="5o3-xz-BUb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j9l-ls-V3r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RhL-Qa-fUp" kind="relationship" relationship="rootViewController" id="lZk-yu-b48"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4L-jY-Mrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="-1095"/>
         </scene>
     </scenes>
 </document>

@@ -29,19 +29,13 @@ class LoginViewModel {
     // Has user signed in
     let signedIn: Observable<Bool>
     
-//    let provider: RxMoyaProvider<DropEvent>
-    
-    let endpointClosure = { (target: DropEvent) -> Endpoint<DropEvent> in
-        return Endpoint<DropEvent>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: RxMoya.ParameterEncoding.JSON, httpHeaderFields: ["Content-Type":"x-www-form-urlencoded"])
-    }
-    
     let user: UserModel
     
     
     init(user: UserModel) {
         self.user = user
         
-        let provider = RxMoyaProvider(endpointClosure: self.endpointClosure, plugins: [NetworkLogger()])
+        let networker = LoginNetworking()
         
         validatedEmail = email.map { email in
             return LoginValidationService.validEmail(email)
@@ -61,7 +55,7 @@ class LoginViewModel {
         
         signedIn = loginTaps.withLatestFrom(usernameAndPassword)
             .flatMapLatest { (email, password) in
-                return combineLatest(provider.request(.Login(email: email, password: password)), just(email)) { ($0, $1) }
+                return combineLatest(networker.provider.request(.Login(email: email, password: password)), just(email)) { ($0, $1) }
             }
             .observeOn(MainScheduler.sharedInstance)
             .map({ response, email in

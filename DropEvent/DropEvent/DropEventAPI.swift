@@ -74,8 +74,7 @@ let endpointClosure = { (target: DropEvent) -> Endpoint<DropEvent> in
 
 
 enum DropEventAuth {
-    case Login(email: String, password: String)
-    case Search(searchTerm: String)
+    case GetEvents
 }
 
 extension DropEventAuth: TargetType {
@@ -83,17 +82,15 @@ extension DropEventAuth: TargetType {
     
     var path: String {
         switch self {
-        case .Login:
-            return "/login"
-        case .Search(let searchTerm):
-            return "/search/\(searchTerm)"
+        case .GetEvents:
+            return "/dropevent"
         }
     }
     
     var method: RxMoya.Method {
         switch self {
-        case .Login:
-            return .POST
+        case .GetEvents:
+            return .GET
         default:
             return .GET
         }
@@ -101,11 +98,8 @@ extension DropEventAuth: TargetType {
     
     var parameters: [String: AnyObject]? {
         switch self {
-        case .Login(let email, let password):
-            return [
-                "email": email,
-                "password": password
-            ]
+        case .GetEvents:
+            return nil
         default:
             return nil
         }
@@ -113,10 +107,8 @@ extension DropEventAuth: TargetType {
     
     var sampleData: NSData {
         switch self {
-        case .Login:
+        case .GetEvents:
             return "sample".dataUsingEncoding(NSUTF8StringEncoding)!
-        case .Search:
-            return "search".dataUsingEncoding(NSUTF8StringEncoding)!
             
         }
     }
@@ -160,6 +152,7 @@ class NetworkLogger: PluginType {
         // If the target is in the blacklist, don't log it.
 //        guard blacklist(target) == false else { return }
 //        print("Sending request: \(String(data: (request.request?.HTTPBody)!, encoding: NSUTF8StringEncoding)  ?? String()) \n")
+//        print("request headers: \(request.request?.allHTTPHeaderFields)")
 //        print("Sending request: \(request.request?.URL?.absoluteString ?? String()) \n")
     }
     

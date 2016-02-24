@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
         loginButton.rx_tap.bindTo(self.viewModel.loginTaps).addDisposableTo(self.viewModel.disposeBag)
         
         viewModel.signedIn.subscribeNext { loggedIn in
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.setEventsAsRoot()
             print(UserModel.sharedInstance.sessionToken)
         }.addDisposableTo(self.viewModel.disposeBag)
     }

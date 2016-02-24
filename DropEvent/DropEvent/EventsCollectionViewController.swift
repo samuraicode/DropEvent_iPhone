@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-private let reuseIdentifier = "Cell"
+private let simpleEventReuseIdentifier = "SimpleEventIdentifier"
 
 class EventsCollectionViewController: UICollectionViewController {
+    
+    let viewModel = EventsViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        self.viewModel.eventsChanged.subscribeNext { reloadView in
+            if reloadView {
+                self.collectionView?.reloadData()
+            }
+        }.addDisposableTo(self.viewModel.disposeBag)
 
         // Do any additional setup after loading the view.
     }
@@ -43,17 +50,20 @@ class EventsCollectionViewController: UICollectionViewController {
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return self.viewModel.numberOfSections
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return self.viewModel.numberOfRows(forSection: section)
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simpleEventReuseIdentifier, forIndexPath: indexPath) as! SimpleEventCollectionViewCell
+        let event = self.viewModel.event(forIndexPath: indexPath)
+        cell.eventName.text = event.name
+        cell.backgroundColor = UIColor.blueColor()
     
         // Configure the cell
     

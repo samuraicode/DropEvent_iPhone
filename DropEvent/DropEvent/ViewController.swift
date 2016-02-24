@@ -17,14 +17,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let api = EventAPI()
-        api.getEvent().subscribeNext {[weak self] event in
-//            self?.image.kf_setImageWithURL(event.thumbnailURL)
-            self?.image.kf_setImageWithURL(event.thumbnailURL, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
-                
-            })
-            print(event.name)
-        }.addDisposableTo(disposeBag)
+//        let api = EventAPI()
+//        api.getEvent().subscribeNext {[weak self] event in
+////            self?.image.kf_setImageWithURL(event.thumbnailURL)
+//            self?.image.kf_setImageWithURL(event.thumbnailURL, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
+//                
+//            })
+//            print(event.name)
+//        }.addDisposableTo(disposeBag)
         
         
     }
