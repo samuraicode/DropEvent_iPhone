@@ -18,11 +18,11 @@ class SearchEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.rx_text.throttle(0.5, MainScheduler.sharedInstance)
+        searchBar.rx_text.throttle(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .map { newSearch -> Observable<Bool> in
                 if newSearch.isEmpty {
-                    return just(false)
+                    return Observable.just(false)
                 }
                 return self.viewModel.findEvents(newSearch.lowercaseString).map({ foundResult in
                     return foundResult

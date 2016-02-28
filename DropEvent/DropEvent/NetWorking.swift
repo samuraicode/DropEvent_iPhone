@@ -11,7 +11,7 @@ import RxMoya
 
 class LoginNetworking {
     private let endpointClosure = { (target: DropEvent) -> Endpoint<DropEvent> in
-        return Endpoint<DropEvent>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: RxMoya.ParameterEncoding.JSON, httpHeaderFields: ["Content-Type":"x-www-form-urlencoded"])
+        return Endpoint<DropEvent>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: RxMoya.ParameterEncoding.URL, httpHeaderFields: ["Content-Type":"application/x-www-form-urlencoded"])
     }
     let provider: RxMoyaProvider<DropEvent>
     
@@ -39,8 +39,8 @@ class AuthenticatedNetworking {
     
     var provider: RxMoyaProvider<DropEventAuth>
 
-    init(user: UserModel = UserModel.sharedInstance) {
-        
+    init() {
+        let user = UserDBModel.fetchUser()!
         let endpointClosure = { (target: DropEventAuth) -> Endpoint<DropEventAuth> in
             let endpoint: Endpoint<DropEventAuth> = Endpoint<DropEventAuth>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
             return endpoint.endpointByAddingHTTPHeaderFields(["x-access-token": user.sessionToken])

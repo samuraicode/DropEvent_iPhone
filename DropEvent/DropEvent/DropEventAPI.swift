@@ -10,6 +10,7 @@ import Foundation
 import RxMoya
 
 private let DropEventBaseURL = "https://dropevent.com/api"
+//private let DropEventBaseURL = "https://dropevent.ngrok.io/api"
 
 
 enum DropEvent {
@@ -113,64 +114,6 @@ extension DropEventAuth: TargetType {
         }
     }
 }
-//
-//static func endpointsClosure<T where T: TargetType, T: ArtsyAPIType>(xAccessToken: String? = nil)(_ target: T) -> Endpoint<T> {
-//    var endpoint: Endpoint<T> = Endpoint<T>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
-//    
-//    // If we were given an xAccessToken, add it
-//    if let xAccessToken = xAccessToken {
-//        endpoint = endpoint.endpointByAddingHTTPHeaderFields(["X-Access-Token": xAccessToken])
-//    }
-//    
-//    // Sign all non-XApp, non-XAuth token requests
-//    if target.addXAuth {
-//        return endpoint.endpointByAddingHTTPHeaderFields(["X-Xapp-Token": XAppToken().token ?? ""])
-//    } else {
-//        return endpoint
-//    }
-//}
-//
-//let authEndpointClosure = { (target: DropEventAuth) -> Endpoint<DropEventAuth> in
-//    let endpoint = Endpoint<DropEventAuth>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: RxMoya.ParameterEncoding.JSON, httpHeaderFields: ["x-access-token":target.parameters["sessionToken"]])
-//    return endpoint
-//}
 
-
-class NetworkLogger: PluginType {
-    
-    typealias Comparison = TargetType -> Bool
-    
-    let whitelist: Comparison
-    let blacklist: Comparison
-    
-    init(whitelist: Comparison = { _ -> Bool in return true }, blacklist: Comparison = { _ -> Bool in  return true }) {
-        self.whitelist = whitelist
-        self.blacklist = blacklist
-    }
-    
-    func willSendRequest(request: RequestType, target: TargetType) {
-        // If the target is in the blacklist, don't log it.
-//        guard blacklist(target) == false else { return }
-//        print("Sending request: \(String(data: (request.request?.HTTPBody)!, encoding: NSUTF8StringEncoding)  ?? String()) \n")
-//        print("request headers: \(request.request?.allHTTPHeaderFields)")
-//        print("Sending request: \(request.request?.URL?.absoluteString ?? String()) \n")
-    }
-    
-    func didReceiveResponse(result: Result<RxMoya.Response, RxMoya.Error>, target: TargetType) {
-        // If the target is in the blacklist, don't log it.
-//        guard blacklist(target) == false else { return }
-//        
-//        switch result {
-//        case .Success(let response):
-//            if 200..<400 ~= (response.statusCode ?? 0) {
-//                // If the status code is OK, and if it's not in our whitelist, then don't worry about logging its response body.
-//                print("Received response(\(response.statusCode ?? 0)) from \(response.response?.URL?.absoluteString ?? String()). \n")
-//            }
-//        case .Failure(let error):
-//            // Otherwise, log everything.
-//            print("Received networking error: \(error)")
-//        }
-    }
-}
 
 

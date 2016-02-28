@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    var viewModel = LoginViewModel(user: UserModel.sharedInstance)
+    var viewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +38,12 @@ class LoginViewController: UIViewController {
         
         loginButton.rx_tap.bindTo(self.viewModel.loginTaps).addDisposableTo(self.viewModel.disposeBag)
         
-        viewModel.signedIn.subscribeNext { loggedIn in
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.setEventsAsRoot()
-            print(UserModel.sharedInstance.sessionToken)
+        viewModel.getSignedIn().subscribeNext { loggedIn in
+            if loggedIn {
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.setEventsAsRoot()
+            }
+            
         }.addDisposableTo(self.viewModel.disposeBag)
     }
 

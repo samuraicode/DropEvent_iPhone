@@ -26,14 +26,17 @@ class EventsViewModel {
         self.myEvents = []
         self.contributedEvents = []
         self.authNetworker = AuthenticatedNetworking()
-        eventsChanged = just(false)
-        if !UserModel.sharedInstance.sessionToken.isEmpty {
-            self.updateEventsChanged()
+        eventsChanged = Observable.just(false)
+        if let user =  UserDBModel.fetchUser() {
+            if !user.sessionToken.isEmpty {
+                self.updateEventsChanged()
+            }
         }
+        
     }
     
     func updateEventsChanged() {
-        eventsChanged = authNetworker.provider.request(.GetEvents).observeOn(MainScheduler.sharedInstance).map({ response in
+        eventsChanged = authNetworker.provider.request(.GetEvents).observeOn(MainScheduler.instance).map({ response in
             switch response.statusCode {
             case 200:
                 let eventsReturned = JSON(data: response.data)

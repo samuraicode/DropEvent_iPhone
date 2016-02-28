@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxMoya
 import SwiftyJSON
+import SugarRecordCoreData
 
 class LoginViewModel {
     
@@ -26,45 +27,42 @@ class LoginViewModel {
     // Is signup button enabled
     let enableLogin: Observable<Bool>
     
-    // Has user signed in
-    let signedIn: Observable<Bool>
     
-    let user: UserModel
-    
-    
-    init(user: UserModel) {
-        self.user = user
+    init() {
         
-        let networker = LoginNetworking()
-        
-        validatedEmail = email.map { email in
+        validatedEmail = email.asObservable().map { email in
             return LoginValidationService.validEmail(email)
         }.shareReplay(1)
         
-        validatedPassword = password.map { password in
+        validatedPassword = password.asObservable().map { password in
             return LoginValidationService.validPassword(password)
         }.shareReplay(1)
         
-        enableLogin = combineLatest(validatedEmail, validatedPassword, resultSelector: { validEmail, validPassword in
+        enableLogin = Observable.combineLatest(validatedEmail, validatedPassword, resultSelector: { validEmail, validPassword in
             return validEmail && validPassword
         }).startWith(false)
         .shareReplay(1)
+    }
+    
+    func getSignedIn() -> Observable<Bool> {
+        let networker = LoginNetworking()
+        let usernameAndPassword = Observable.combineLatest(email.asObservable(), password.asObservable()) { ($0, $1) }
         
-        
-        let usernameAndPassword = combineLatest(email, password) { ($0, $1) }
-        
-        signedIn = loginTaps.withLatestFrom(usernameAndPassword)
+        return loginTaps.withLatestFrom(usernameAndPassword)
             .flatMapLatest { (email, password) in
-                return combineLatest(networker.provider.request(.Login(email: email, password: password)), just(email)) { ($0, $1) }
+                return Observable.combineLatest(networker.provider.request(.Login(email: email, password: password)), Observable.just(email)) { ($0, $1) }
             }
-            .observeOn(MainScheduler.sharedInstance)
+            .observeOn(MainScheduler.instance)
             .map({ response, email in
                 switch response.statusCode {
                 case 200:
                     let json = JSON(data: response.data)
-                    user.email = email
-                    user.sessionToken = json["token"].string ?? ""
-//                    user.save()
+                    DBManager.sharedInstance.db.operation({ (context, save) -> Void in
+                        let newUser: UserDBModel = try! context.create()
+                        newUser.email = email
+                        newUser.sessionToken = json["token"].string ?? ""
+                        save()
+                    })
                     return true
                 default:
                     return false

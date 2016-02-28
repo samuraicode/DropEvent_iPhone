@@ -22,13 +22,13 @@ class SearchEventsViewModel  {
     
     
     init() {
-        dropEventProvider = RxMoyaProvider(endpointClosure: endpointClosure, plugins: [NetworkLogger()])
+        dropEventProvider = RxMoyaProvider(endpointClosure: endpointClosure, plugins: [])
         self.events = []
         
     }
     
     func findEvents(searchTerm: String) -> Observable<Bool> {
-        return dropEventProvider.request(.Search(searchTerm: searchTerm)).observeOn(MainScheduler.sharedInstance).map({ response in
+        return dropEventProvider.request(.Search(searchTerm: searchTerm)).observeOn(MainScheduler.instance).map({ response in
             switch response.statusCode {
             case 200:
                 if let eventsReturned = JSON(data: response.data).array {
