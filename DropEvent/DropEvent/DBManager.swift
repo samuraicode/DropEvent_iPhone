@@ -16,8 +16,7 @@ class DBManager: NSObject {
     
     lazy var db: CoreDataDefaultStorage = {
         let store = CoreData.Store.Named("DropEvent")
-        let bundle = NSBundle(forClass: DBManager.classForCoder())
-        let model = CoreData.ObjectModel.Merged([bundle])
+        let model = CoreData.ObjectModel.Named("DropEventModel", NSBundle.mainBundle())
         let defaultStorage = try! CoreDataDefaultStorage(store: store, model: model)
         return defaultStorage
     }()

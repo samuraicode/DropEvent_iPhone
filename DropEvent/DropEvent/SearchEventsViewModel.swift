@@ -32,8 +32,8 @@ class SearchEventsViewModel  {
             switch response.statusCode {
             case 200:
                 if let eventsReturned = JSON(data: response.data).array {
-                    self.events = eventsReturned.map {
-                        return EventModel(json: $0)
+                    self.events = eventsReturned.map { _ in 
+                        return EventModel()
                     }
                     if self.events.count > 0 {
                         return true

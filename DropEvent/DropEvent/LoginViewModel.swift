@@ -52,7 +52,6 @@ class LoginViewModel {
             .flatMapLatest { (email, password) in
                 return Observable.combineLatest(networker.provider.request(.Login(email: email, password: password)), Observable.just(email)) { ($0, $1) }
             }
-            .observeOn(MainScheduler.instance)
             .map({ response, email in
                 switch response.statusCode {
                 case 200:
@@ -67,7 +66,7 @@ class LoginViewModel {
                 default:
                     return false
                 }
-            })
+            }).observeOn(MainScheduler.instance)
     }
     
     

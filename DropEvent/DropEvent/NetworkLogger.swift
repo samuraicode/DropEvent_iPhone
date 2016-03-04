@@ -25,7 +25,7 @@ class NetworkLogger: PluginType {
         // If the target is in the blacklist, don't log it.
         //        guard blacklist(target) == false else { return }
 //                print("Sending request: \(String(data: (request.request?.HTTPBody)!, encoding: NSUTF8StringEncoding)  ?? String()) \n")
-//                print("request headers: \(request.request?.allHTTPHeaderFields)")
+                print("request headers: \(request.request?.allHTTPHeaderFields)")
         //        print("Sending request: \(request.request?.URL?.absoluteString ?? String()) \n")
     }
     

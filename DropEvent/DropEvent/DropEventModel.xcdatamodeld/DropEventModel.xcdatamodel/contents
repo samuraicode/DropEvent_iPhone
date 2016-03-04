@@ -1,10 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15E49a" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15E56a" minimumToolsVersion="Xcode 7.0">
+    <entity name="EventFolderModel" representedClassName=".EventFolderModel" syncable="YES">
+        <attribute name="allowUpload" attributeType="Boolean" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventModel" inverseName="folders" inverseEntity="EventModel" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EventPhotoModel" inverseName="folder" inverseEntity="EventPhotoModel" syncable="YES"/>
+    </entity>
+    <entity name="EventModel" representedClassName=".EventModel" syncable="YES">
+        <attribute name="allowDownload" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="contributorCount" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="created" attributeType="Date" syncable="YES"/>
+        <attribute name="directory" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="eventDescription" attributeType="String" syncable="YES"/>
+        <attribute name="expiration" attributeType="Date" syncable="YES"/>
+        <attribute name="expirationText" attributeType="String" syncable="YES"/>
+        <attribute name="expired" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="isCollection" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isModerated" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isOpen" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="isOwner" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isPublic" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="nameLower" attributeType="String" syncable="YES"/>
+        <attribute name="owner" attributeType="String" syncable="YES"/>
+        <attribute name="ownerId" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="pendingCount" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="photoCount" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="premium" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="reminded" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="reminderCount" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="showAd" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="showFileName" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="sortBy" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+        <attribute name="tag" attributeType="String" syncable="YES"/>
+        <attribute name="tagLower" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnailURLString" attributeType="String" syncable="YES"/>
+        <attribute name="unsorted" attributeType="String" syncable="YES"/>
+        <attribute name="userFolder" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="varySizes" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="folders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EventFolderModel" inverseName="event" inverseEntity="EventFolderModel" syncable="YES"/>
+    </entity>
+    <entity name="EventPhotoModel" representedClassName=".EventPhotoModel" syncable="YES">
+        <attribute name="caption" attributeType="String" syncable="YES"/>
+        <attribute name="displayURLString" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="eventID" attributeType="String" syncable="YES"/>
+        <attribute name="eventOwner" attributeType="String" syncable="YES"/>
+        <attribute name="folderID" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="processedURLString" attributeType="String" syncable="YES"/>
+        <attribute name="taken" attributeType="Date" syncable="YES"/>
+        <attribute name="thumbNailURLString" attributeType="String" syncable="YES"/>
+        <attribute name="uploaded" attributeType="Date" syncable="YES"/>
+        <relationship name="folder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventFolderModel" inverseName="photos" inverseEntity="EventFolderModel" syncable="YES"/>
+    </entity>
     <entity name="UserDBModel" representedClassName=".UserDBModel" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="sessionToken" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="EventFolderModel" positionX="-324" positionY="288" width="128" height="118"/>
+        <element name="EventModel" positionX="-540" positionY="-160" width="128" height="568"/>
+        <element name="EventPhotoModel" positionX="-108" positionY="297" width="128" height="223"/>
         <element name="UserDBModel" positionX="162" positionY="-36" width="128" height="73"/>
     </elements>
 </model>
