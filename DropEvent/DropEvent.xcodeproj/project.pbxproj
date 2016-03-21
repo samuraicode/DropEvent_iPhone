@@ -28,12 +28,13 @@
 		88B28BD71C699AA700DB8C30 /* SearchEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD61C699AA700DB8C30 /* SearchEventsViewModel.swift */; };
 		88B28BDA1C699BC100DB8C30 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B28BD91C699BC100DB8C30 /* SearchResultTableViewCell.swift */; };
 		88C1AFBE1C8293D500C670D0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1AFBD1C8293D500C670D0 /* DBManager.swift */; };
+		88DA92EA1C97D4D40006A897 /* GCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DA92E91C97D4D40006A897 /* GCDKit.framework */; };
+		88DA92EC1C97D4DE0006A897 /* CoreStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DA92EB1C97D4DE0006A897 /* CoreStore.framework */; };
 		88E3098A1C82A67200A3441B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471291C2C99E60035C12C /* RxSwift.framework */; };
 		88E3098B1C82A68100A3441B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471271C2C99E60035C12C /* RxCocoa.framework */; };
 		88E3098C1C82A69600A3441B /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471281C2C99E60035C12C /* RxMoya.framework */; };
 		88E3098D1C82A6A800A3441B /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471261C2C99E60035C12C /* Moya.framework */; };
 		88E3098F1C82A7F900A3441B /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E3098E1C82A7F900A3441B /* NetworkLogger.swift */; };
-		88E309911C82AFF100A3441B /* SugarRecordCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C1AFB91C82936400C670D0 /* SugarRecordCoreData.framework */; };
 		88E309921C82B00100A3441B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8824712A1C2C99E60035C12C /* SwiftyJSON.framework */; };
 		88E309931C82B04B00A3441B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882471251C2C99E60035C12C /* Alamofire.framework */; };
 		88E309951C82B1F500A3441B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E309941C82B1F500A3441B /* ReactiveCocoa.framework */; };
@@ -104,8 +105,9 @@
 		88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
 		88B28BD61C699AA700DB8C30 /* SearchEventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventsViewModel.swift; sourceTree = "<group>"; };
 		88B28BD91C699BC100DB8C30 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
-		88C1AFB91C82936400C670D0 /* SugarRecordCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SugarRecordCoreData.framework; path = Carthage/Build/iOS/SugarRecordCoreData.framework; sourceTree = "<group>"; };
 		88C1AFBD1C8293D500C670D0 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		88DA92E91C97D4D40006A897 /* GCDKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDKit.framework; path = Carthage/Build/iOS/GCDKit.framework; sourceTree = "<group>"; };
+		88DA92EB1C97D4DE0006A897 /* CoreStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreStore.framework; path = Carthage/Build/iOS/CoreStore.framework; sourceTree = "<group>"; };
 		88E3098E1C82A7F900A3441B /* NetworkLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		88E309941C82B1F500A3441B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		88E309961C82B23400A3441B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -130,12 +132,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DA92EC1C97D4DE0006A897 /* CoreStore.framework in Frameworks */,
+				88DA92EA1C97D4D40006A897 /* GCDKit.framework in Frameworks */,
 				88E309991C82B26600A3441B /* RxBlocking.framework in Frameworks */,
 				88E309971C82B23400A3441B /* Result.framework in Frameworks */,
 				88E309951C82B1F500A3441B /* ReactiveCocoa.framework in Frameworks */,
 				88E309931C82B04B00A3441B /* Alamofire.framework in Frameworks */,
 				88E309921C82B00100A3441B /* SwiftyJSON.framework in Frameworks */,
-				88E309911C82AFF100A3441B /* SugarRecordCoreData.framework in Frameworks */,
 				88E3098D1C82A6A800A3441B /* Moya.framework in Frameworks */,
 				88E3098C1C82A69600A3441B /* RxMoya.framework in Frameworks */,
 				88E3098B1C82A68100A3441B /* RxCocoa.framework in Frameworks */,
@@ -257,10 +260,11 @@
 		882471311C2C99EE0035C12C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88DA92EB1C97D4DE0006A897 /* CoreStore.framework */,
+				88DA92E91C97D4D40006A897 /* GCDKit.framework */,
 				88E309981C82B26600A3441B /* RxBlocking.framework */,
 				88E309961C82B23400A3441B /* Result.framework */,
 				88E309941C82B1F500A3441B /* ReactiveCocoa.framework */,
-				88C1AFB91C82936400C670D0 /* SugarRecordCoreData.framework */,
 				88E421721C2D064D00D4C626 /* Kingfisher.framework */,
 				882471251C2C99E60035C12C /* Alamofire.framework */,
 				882471261C2C99E60035C12C /* Moya.framework */,
@@ -462,11 +466,12 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SugarRecordCoreData.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CoreStore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GCDKit.framework",
 			);
 			outputPaths = (
 			);

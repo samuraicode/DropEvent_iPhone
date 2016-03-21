@@ -2,7 +2,7 @@
 //  EventPhotoModel+CoreDataProperties.swift
 //  DropEvent
 //
-//  Created by Jesse Gatt on 2/29/16.
+//  Created by Jesse Gatt on 3/16/16.
 //  Copyright © 2016 SamuraiCode. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,17 +14,17 @@ import CoreData
 
 extension EventPhotoModel {
 
-    @NSManaged var id: String
+    @NSManaged var caption: String
+    @NSManaged var displayURLString: String
+    @NSManaged var email: String
     @NSManaged var eventID: String
     @NSManaged var eventOwner: String
     @NSManaged var folderID: String
-    @NSManaged var email: String
-    @NSManaged var displayURLString: String
+    @NSManaged var id: String
     @NSManaged var processedURLString: String
-    @NSManaged var thumbNailURLString: String
     @NSManaged var taken: NSDate
+    @NSManaged var thumbNailURLString: String
     @NSManaged var uploaded: NSDate
-    @NSManaged var caption: String
-    @NSManaged var folder: NSManagedObject?
+    @NSManaged var folder: EventFolderModel?
 
 }

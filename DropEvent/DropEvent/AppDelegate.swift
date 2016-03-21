@@ -15,11 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        DBManager.initStack()
         // Override point for customization after application launch.
-        if UserDBModel.fetchUser() == nil {
-            self.setLoginAsRoot()
+        if let _ = UserDBModel.fetchUser() {
+           self.setEventsAsRoot()
         }else {
-            self.setEventsAsRoot()
+           self.setLoginAsRoot()
         }
         
         return true

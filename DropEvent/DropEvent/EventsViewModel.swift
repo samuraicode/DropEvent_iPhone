@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxMoya
 import SwiftyJSON
-import SugarRecordCoreData
+import CoreStore
 
 class EventsViewModel {
     
@@ -24,11 +24,17 @@ class EventsViewModel {
     var eventsChanged: Observable<Bool>
     
     init() {
-        self.myEvents = try! DBManager.sharedInstance.db.fetch(Request<EventModel>())
+        self.myEvents = []
         self.contributedEvents = []
         self.authNetworker = AuthenticatedNetworking()
         eventsChanged = Observable.just(false)
         if let user =  UserDBModel.fetchUser() {
+            if let myEvents = user.myEvents {
+                self.myEvents = Array(myEvents)
+            }
+            if let contributedEvents = user.contributedEvents {
+                self.contributedEvents = Array(contributedEvents)
+            }
             if !user.sessionToken.isEmpty {
                 self.updateEventsChanged()
             }
@@ -41,13 +47,10 @@ class EventsViewModel {
             switch response.statusCode {
             case 200:
                 let eventsReturned = JSON(data: response.data)
-                if let myEventsReturned = eventsReturned["Mine"].array {
-                    self.myEvents = self.addEvents(myEventsReturned)
-                }
+                let eventsTuple = self.add(eventsReturned["Mine"].array, contributedEventsJson: eventsReturned["Contributed"].array)
+                self.myEvents = eventsTuple.myEvent
+                self.contributedEvents = eventsTuple.contributedEvent
                 
-//                if let contributedEventsReturned = eventsReturned["Contributed"].array {
-//                    self.contributedEvents = self.addEvents(contributedEventsReturned)
-//                }
                 if self.myEvents.count > 0 || self.contributedEvents.count > 0 {
                     return true
                 }else {
@@ -80,44 +83,56 @@ class EventsViewModel {
         return self.myEvents[indexPath.row]
     }
     
-    func addEvents(eventsJson: [JSON]) -> [EventModel] {
-        var events: [EventModel] = []
-        DBManager.sharedInstance.db.operation ({ (context, save) -> Void in
-//            let dbEvents = try! context.fetch(Request<EventModel>())
-//            try! context.remove(dbEvents)
-            for eventJson in eventsJson {
-                let newEventModel: EventModel = try! context.create()
-                newEventModel.populate(eventJson)
-                if let foldersJson = eventJson["folders"].array {
-                    var folders: [EventFolderModel] = []
-                    for folderJson in foldersJson {
-                        let newEventFolderModel: EventFolderModel = try! context.create()
-                        newEventFolderModel.populate(folderJson)
-                        
-                        if let photosJson = folderJson["photos"].array {
-                            var photos: [EventPhotoModel] = []
-                            for photoJson in photosJson {
-                                let newEventPhotoModel: EventPhotoModel = try! context.create()
-                                newEventPhotoModel.populate(photoJson)
-                                photos.append(newEventPhotoModel)
-                            }
-                            newEventFolderModel.photos = NSSet(array: photos)
-                        }
-                        folders.append(newEventFolderModel)
-                    }
-                    newEventModel.folders = NSSet(array: folders)
+    func add(myEventsJson: [JSON]?, contributedEventsJson: [JSON]?) -> (myEvent:[EventModel],contributedEvent:[EventModel]) {
+        var newMyEvents: [EventModel] = []
+        var newContributedEvents: [EventModel] = []
+        CoreStore.beginSynchronous { (transaction) -> Void in
+            if let user = transaction.fetchOne(From(UserDBModel)) {
+                if let uwMyEvents = user.myEvents {
+                    transaction.delete(uwMyEvents)
                 }
-                events.append(newEventModel)
+                if let uwContributedEvents = user.contributedEvents {
+                    transaction.delete(uwContributedEvents)
+                }
+                
+                let addEventsToTransaction: ((eventsJson:[JSON]?) -> [EventModel]) = { eventsJson in
+                    var events: [EventModel] = []
+                    if let eventsJsonUnwrapped = eventsJson {
+                        for eventJson in eventsJsonUnwrapped {
+                            let newEventModel: EventModel = transaction.create(Into(EventModel))
+                            newEventModel.populate(eventJson)
+                            if let foldersJson = eventJson["folders"].array {
+                                newEventModel.folders = []
+                                for folderJson in foldersJson {
+                                    let newEventFolderModel: EventFolderModel = transaction.create(Into(EventFolderModel))
+                                    newEventFolderModel.populate(folderJson)
+                                    
+                                    if let photosJson = folderJson["photos"].array {
+                                        newEventFolderModel.photos = []
+                                        for photoJson in photosJson {
+                                            let newEventPhotoModel: EventPhotoModel = transaction.create(Into(EventPhotoModel))
+                                            newEventPhotoModel.populate(photoJson)
+                                            newEventFolderModel.photos!.insert(newEventPhotoModel)
+                                        }
+                                    }
+                                    newEventModel.folders!.insert(newEventFolderModel)
+                                }
+                            }
+                            events.append(newEventModel)
+                        }
+                    }
+                    
+                    return events
+                }
+                newMyEvents = addEventsToTransaction(eventsJson: myEventsJson)
+                newContributedEvents = addEventsToTransaction(eventsJson: contributedEventsJson)
+                user.myEvents = Set(newMyEvents)
+                user.contributedEvents = Set(newContributedEvents)
+                transaction.commitAndWait()
+                
             }
-            let values = try! context.request(EventModel.self).fetch()
-            save()
-        })
-        DBManager.sharedInstance.db.operation ({ (context, save) -> Void in
-            
-            let values = try! context.request(EventModel.self).fetch()
-        })
-        let values: [EventModel] = try! DBManager.sharedInstance.db.fetch(Request<EventModel>())
-        return events
+        }
+        return (newMyEvents, newContributedEvents)
     }
 
     

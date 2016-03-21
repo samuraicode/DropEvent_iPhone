@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 private let simpleEventReuseIdentifier = "SimpleEventIdentifier"
 
@@ -63,6 +64,9 @@ class EventsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simpleEventReuseIdentifier, forIndexPath: indexPath) as! SimpleEventCollectionViewCell
         let event = self.viewModel.event(forIndexPath: indexPath)
         cell.eventName.text = event.name
+        if let eventThumbnailURL = event.thumbnailURL {
+          cell.eventThumbnail.kf_setImageWithURL(eventThumbnailURL)
+        }
         cell.backgroundColor = UIColor.blueColor()
     
         // Configure the cell

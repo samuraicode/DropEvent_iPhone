@@ -7,17 +7,48 @@
 //
 
 import Foundation
-import SugarRecordCoreData
 import CoreData
+import CoreStore
 
-class DBManager: NSObject {
+class DBManager {
     
     static let sharedInstance = DBManager()
     
-    lazy var db: CoreDataDefaultStorage = {
-        let store = CoreData.Store.Named("DropEvent")
-        let model = CoreData.ObjectModel.Named("DropEventModel", NSBundle.mainBundle())
-        let defaultStorage = try! CoreDataDefaultStorage(store: store, model: model)
-        return defaultStorage
-    }()
+//    var userDataStack: DataStack
+////    var eventsDataStack: DataStack
+//    
+//    init() {
+//        CoreStore.defaultStack = DataStack(
+//            modelName: "DropEventModel"
+//        )
+////        self.eventsDataStack = DataStack(
+////            modelName: "Events"
+////        )
+//        do {
+//            try CoreStore.defaultStack.addSQLiteStoreAndWait()
+////            try self.eventsDataStack.addSQLiteStoreAndWait()
+//        }catch {
+//            
+//        }
+//    }
+//    
+    
+    static func initStack() {
+        CoreStore.defaultStack = DataStack(
+            modelName: "DropEventModel"
+        )
+        do {
+            try CoreStore.addSQLiteStoreAndWait()
+        }catch {
+            
+        }
+        
+    }
+//    lazy var db: CoreDataDefaultStorage = {
+//        let store = CoreData.Store.Named("DropEvent")
+//        let bundle = NSBundle(forClass: DBManager.classForCoder())
+//        let model = CoreData.ObjectModel.Merged([bundle])
+//        let defaultStorage = try! CoreDataDefaultStorage(store: store, model: model)
+//        return defaultStorage
+//    }()
 }

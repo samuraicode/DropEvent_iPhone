@@ -30,6 +30,7 @@ extension EventPhotoModel {
         self.processedURLString = json["processed"].string ?? ""
         self.thumbNailURLString = json["thumbnail"].string ?? ""
         let dateFormatter = NSDateFormatter()
+        //TODO: Fix formatter
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         self.taken = dateFormatter.dateFromString(json["taken"].string ?? "") ?? NSDate()
         self.uploaded = dateFormatter.dateFromString(json["uploaded"].string ?? "") ?? NSDate()

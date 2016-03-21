@@ -10,5 +10,6 @@ import UIKit
 
 class SimpleEventCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventThumbnail: UIImageView!
     
 }

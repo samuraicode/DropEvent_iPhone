@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxMoya
 import SwiftyJSON
-import SugarRecordCoreData
+import CoreStore
 
 class LoginViewModel {
     
@@ -56,11 +56,11 @@ class LoginViewModel {
                 switch response.statusCode {
                 case 200:
                     let json = JSON(data: response.data)
-                    DBManager.sharedInstance.db.operation({ (context, save) -> Void in
-                        let newUser: UserDBModel = try! context.create()
+                    CoreStore.beginSynchronous({ (transaction) -> Void in
+                        let newUser = transaction.create(Into(UserDBModel))
                         newUser.email = email
                         newUser.sessionToken = json["token"].string ?? ""
-                        save()
+                        transaction.commitAndWait()
                     })
                     return true
                 default:
