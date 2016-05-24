@@ -1,0 +1,19 @@
+#Alamofire used for networking, include all versions compatible with 3.0
+github "Alamofire/Alamofire" ~> 3.0
+
+#RxSwift used for reactive programming paradigm
+github "ReactiveX/RxSwift" ~> 2.0
+
+
+#Moya used as abstraction layer between networking and interface layer, also used for easy network mocking
+github "Moya/Moya"
+
+#SwiftyJSON used for easy json parsing
+github "SwiftyJSON/SwiftyJSON"
+
+#Kingfisher used for image downloading and caching
+github "onevcat/Kingfisher" ~> 2.1
+
+#CoreStore used to simplify core data database logic
+github "JohnEstropia/CoreStore" >= 1.4.4
+github "JohnEstropia/GCDKit" >= 1.1.7
