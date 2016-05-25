@@ -16,6 +16,7 @@ private let DropEventBaseURL = "https://dropevent.com/api"
 enum DropEvent {
     case Login(email: String, password: String)
     case Search(searchTerm: String)
+    case GetByTag(tag: String)
 }
 
 extension DropEvent: TargetType {
@@ -27,6 +28,8 @@ extension DropEvent: TargetType {
             return "/login"
         case .Search(let searchTerm):
             return "/search/\(searchTerm)"
+        case .GetByTag(let tag):
+            return "/dropevent/\(tag)"
         }
     }
     
@@ -57,7 +60,8 @@ extension DropEvent: TargetType {
             return "sample".dataUsingEncoding(NSUTF8StringEncoding)!
         case .Search:
             return "search".dataUsingEncoding(NSUTF8StringEncoding)!
-            
+        case .GetByTag:
+            return "dropevent/sample".dataUsingEncoding(NSUTF8StringEncoding)!
         }
     }
 }

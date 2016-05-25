@@ -16,7 +16,7 @@ class SearchEventsViewModel  {
     
     let disposeBag = DisposeBag()
     
-    var events: [EventModel]
+    var events: [EventSearchModel]
     
     var dropEventProvider: RxMoyaProvider<DropEvent>
     
@@ -32,8 +32,8 @@ class SearchEventsViewModel  {
             switch response.statusCode {
             case 200:
                 if let eventsReturned = JSON(data: response.data).array {
-                    self.events = eventsReturned.map { _ in 
-                        return EventModel()
+                    self.events = eventsReturned.map { eventData in
+                        return EventSearchModel(json:eventData)//EventModel()
                     }
                     if self.events.count > 0 {
                         return true
@@ -52,7 +52,7 @@ class SearchEventsViewModel  {
         return self.events.count
     }
     
-    func eventFor(indexPath: NSIndexPath) -> EventModel {
+    func eventFor(indexPath: NSIndexPath) -> EventSearchModel {
         return self.events[indexPath.row]
     }
     

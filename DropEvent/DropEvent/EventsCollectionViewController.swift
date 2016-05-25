@@ -37,15 +37,16 @@ class EventsCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.destinationViewController is GalleryViewController {
+            (segue.destinationViewController as! GalleryViewController).eventTag = (sender as! SimpleEventCollectionViewCell).eventTag
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -64,6 +65,7 @@ class EventsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simpleEventReuseIdentifier, forIndexPath: indexPath) as! SimpleEventCollectionViewCell
         let event = self.viewModel.event(forIndexPath: indexPath)
         cell.eventName.text = event.name
+        cell.eventTag = event.tagLower
         if let eventThumbnailURL = event.thumbnailURL {
           cell.eventThumbnail.kf_setImageWithURL(eventThumbnailURL)
         }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F4F5D5D1CF600CD00516831 /* EventSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D5C1CF600CD00516831 /* EventSearchModel.swift */; };
+		3F4F5D5F1CF64ECB00516831 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D5E1CF64ECB00516831 /* GalleryViewController.swift */; };
+		3F4F5D611CF6556600516831 /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D601CF6556600516831 /* GalleryPhotoCell.swift */; };
+		3F4F5D641CF6634C00516831 /* SingleEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D631CF6634C00516831 /* SingleEventViewModel.swift */; };
 		3F94B7131C1A9B0C00A99677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */; };
 		3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94B7141C1A9B0C00A99677 /* ViewController.swift */; };
 		3F94B7181C1A9B0C00A99677 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F94B7161C1A9B0C00A99677 /* Main.storyboard */; };
@@ -73,6 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F4F5D5C1CF600CD00516831 /* EventSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSearchModel.swift; sourceTree = "<group>"; };
+		3F4F5D5E1CF64ECB00516831 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		3F4F5D601CF6556600516831 /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
+		3F4F5D631CF6634C00516831 /* SingleEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEventViewModel.swift; sourceTree = "<group>"; };
 		3F94B70F1C1A9B0C00A99677 /* DropEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F94B7141C1A9B0C00A99677 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +172,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4F5D621CF6632000516831 /* Show Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F4F5D5E1CF64ECB00516831 /* GalleryViewController.swift */,
+				3F4F5D601CF6556600516831 /* GalleryPhotoCell.swift */,
+				3F4F5D631CF6634C00516831 /* SingleEventViewModel.swift */,
+			);
+			name = "Show Views";
+			sourceTree = "<group>";
+		};
 		3F94B7061C1A9B0C00A99677 = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +271,7 @@
 				88E309A01C855FDE00A3441B /* EventFolderModel+CoreDataProperties.swift */,
 				88E309A11C855FDE00A3441B /* EventFolderModel.swift */,
 				882471211C2C98330035C12C /* EventFolderModel+JSON.swift */,
+				3F4F5D5C1CF600CD00516831 /* EventSearchModel.swift */,
 			);
 			name = "Event Models";
 			sourceTree = "<group>";
@@ -311,6 +330,7 @@
 				88B28BCC1C69979400DB8C30 /* EventsViewModel.swift */,
 				88B28BD41C699A9A00DB8C30 /* EventsCollectionViewController.swift */,
 				8895540C1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift */,
+				3F4F5D621CF6632000516831 /* Show Views */,
 				88B28BD81C699AAF00DB8C30 /* Search Events */,
 			);
 			name = Events;
@@ -497,22 +517,26 @@
 				88B28BDA1C699BC100DB8C30 /* SearchResultTableViewCell.swift in Sources */,
 				88FFFCDC1C4F316F00515B90 /* CoreDataStack.swift in Sources */,
 				88FFFCED1C4F419B00515B90 /* UserDBModel.swift in Sources */,
+				3F4F5D611CF6556600516831 /* GalleryPhotoCell.swift in Sources */,
 				88E309A61C855FDE00A3441B /* EventFolderModel+CoreDataProperties.swift in Sources */,
 				88FFFCEC1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift in Sources */,
 				88FFFCDF1C4F36EC00515B90 /* DropEventModel.xcdatamodeld in Sources */,
 				88E309A21C855FDE00A3441B /* EventPhotoModel+CoreDataProperties.swift in Sources */,
 				882471241C2C98440035C12C /* EventPhotoModel+JSON.swift in Sources */,
+				3F4F5D5D1CF600CD00516831 /* EventSearchModel.swift in Sources */,
 				8895540B1C7C33CC006F754B /* RootViewManagement.swift in Sources */,
 				88B28BCD1C69979400DB8C30 /* EventsViewModel.swift in Sources */,
 				8850FC3E1C475DB800BBF33F /* LoginViewController.swift in Sources */,
 				88B28BD51C699A9A00DB8C30 /* EventsCollectionViewController.swift in Sources */,
 				88E309A31C855FDE00A3441B /* EventPhotoModel.swift in Sources */,
+				3F4F5D5F1CF64ECB00516831 /* GalleryViewController.swift in Sources */,
 				88E309A51C855FDE00A3441B /* EventModel.swift in Sources */,
 				88B28BD31C699A8500DB8C30 /* SearchEventsTableViewController.swift in Sources */,
 				8824711F1C2C97D60035C12C /* EventModel+JSON.swift in Sources */,
 				3F94B7131C1A9B0C00A99677 /* AppDelegate.swift in Sources */,
 				88E3098F1C82A7F900A3441B /* NetworkLogger.swift in Sources */,
 				88E3099B1C82B74200A3441B /* UserDBModel+Fetch.swift in Sources */,
+				3F4F5D641CF6634C00516831 /* SingleEventViewModel.swift in Sources */,
 				8850FC401C475DC200BBF33F /* LoginViewModel.swift in Sources */,
 				88C1AFBE1C8293D500C670D0 /* DBManager.swift in Sources */,
 			);

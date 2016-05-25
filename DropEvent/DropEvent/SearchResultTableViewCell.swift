@@ -11,6 +11,8 @@ import UIKit
 class SearchResultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventThumbnail: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
