@@ -23,7 +23,7 @@ extension EventPhotoModel {
     @NSManaged var id: String
     @NSManaged var processedURLString: String
     @NSManaged var taken: NSDate
-    @NSManaged var thumbNailURLString: String
+    @NSManaged var thumbnailURLString: String
     @NSManaged var uploaded: NSDate
     @NSManaged var folder: EventFolderModel?
 

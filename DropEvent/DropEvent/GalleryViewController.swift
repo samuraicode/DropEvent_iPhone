@@ -17,16 +17,24 @@ class GalleryViewController: UICollectionViewController {
     
     let viewModel = SingleEventViewModel()
     var eventTag = "sample"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(eventTag)
+        viewModel.getEvent(eventTag)
+        viewModel.loadedEvent.addHandler(self, handler: GalleryViewController.handleLoaded)
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Do any additional setup after loading the view.
+    }
+    
+    func handleLoaded(result: (Bool)) {
+        print("Success: \(result)")
+        self.collectionView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,9 +67,8 @@ class GalleryViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simpleEventReuseIdentifier, forIndexPath: indexPath) as! GalleryPhotoCell
-        let event = self.viewModel.dropevent
-        if let eventThumbnailURL = event.thumbnailURL {
-            cell.photoThumbnail.kf_setImageWithURL(eventThumbnailURL)
+        if let photo = self.viewModel.photoForSectionAndIndex(indexPath.section, index: indexPath.item) {
+            cell.photoThumbnail.kf_setImageWithURL(photo.thumbnailURL)
         }
         cell.backgroundColor = UIColor.whiteColor()
         

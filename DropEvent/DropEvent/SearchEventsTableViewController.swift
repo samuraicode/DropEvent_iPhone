@@ -61,7 +61,6 @@ class SearchEventsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultCell", forIndexPath: indexPath) as! SearchResultTableViewCell
-        //let cell = tableView.dequeueReusableCellWithIdentifier("SearchResult2Cell", forIndexPath: indexPath) as! SearchResultTableViewCell
         let event = self.viewModel.eventFor(indexPath)
         cell.eventName.text = event.name
         if let eventThumbnailURL = event.thumbnailURL {

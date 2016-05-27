@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxMoya
 import SwiftyJSON
+import CoreStore
 
 
 class SingleEventViewModel  {
@@ -19,24 +20,52 @@ class SingleEventViewModel  {
     var dropevent: EventModel
     
     var dropEventProvider: RxMoyaProvider<DropEvent>
+    
+    let loadedEvent = Notification<(Bool)>()
+    
+    var folders : [EventFolderModel]
 
     init() {
         dropEventProvider = RxMoyaProvider(endpointClosure: endpointClosure, plugins: [])
-        dropevent = EventModel()
         
+        dropevent = NSEntityDescription.insertNewObjectForEntityForName("EventModel", inManagedObjectContext: CoreDataStack.sharedInstance.mainObjectContext) as! EventModel
+        
+        folders = []
     }
     
-    func getEvent(lowerTag: String) -> Observable<Bool> {
-        return dropEventProvider.request(.GetByTag(tag: lowerTag)).observeOn(MainScheduler.instance).map({ response in
-            switch response.statusCode {
-            case 200:
-                self.dropevent = EventModel()
-                self.dropevent.populate(JSON(data: response.data))
-                return true
-            default:
-                return false
-            }
-        })
+    func getEvent(lowerTag: String) -> Void {
+        dropEventProvider.request(.GetByTag(tag: lowerTag)) { response in
+            print(response.value)
+            let response = response.value
+            switch response!.statusCode {
+                case 200:
+                    let eventJson = JSON(data: response!.data)
+                    self.dropevent.populate(eventJson)
+                    if let foldersJson = eventJson["folders"].array {
+                        self.dropevent.folders = []
+                        for folderJson in foldersJson {
+                            let newEventFolderModel = NSEntityDescription.insertNewObjectForEntityForName("EventFolderModel", inManagedObjectContext: CoreDataStack.sharedInstance.mainObjectContext) as! EventFolderModel
+                            newEventFolderModel.populate(folderJson)
+                            if let photosJson = folderJson["photos"].array {
+                                newEventFolderModel.photos = []
+                                for photoJson in photosJson {
+                                    let newEventPhotoModel = NSEntityDescription.insertNewObjectForEntityForName("EventPhotoModel", inManagedObjectContext: CoreDataStack.sharedInstance.mainObjectContext) as! EventPhotoModel
+                                    newEventPhotoModel.populate(photoJson)
+                                    newEventFolderModel.photos!.insert(newEventPhotoModel)
+                                }
+                            }
+                            self.dropevent.folders!.insert(newEventFolderModel)
+                            self.folders.append(newEventFolderModel)
+                        }
+                    }
+                    print("Populated")
+                    print(self.dropevent.folders!.count)
+                    self.loadedEvent.raise(true)
+                default:
+                    print("Failed to get event")
+                    self.loadedEvent.raise(false)
+                }
+        }
     }
     
     func numberOfSections() -> Int {
@@ -44,8 +73,12 @@ class SingleEventViewModel  {
     }
     
     func photosForSection(section: Int) -> Int {
-        return 10
-        //return self.dropevent.folders![section].photos.count
+        return self.folders[section].photos!.count
+    }
+    
+    func photoForSectionAndIndex(section: Int, index: Int) -> EventPhotoModel? {
+        let photos = self.folders[section].photos!
+        return photos[photos.startIndex.advancedBy(index)]
     }
     
 }

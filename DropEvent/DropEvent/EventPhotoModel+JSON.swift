@@ -17,6 +17,12 @@ extension EventPhotoModel {
         }
     }
     
+    var thumbnailURL: NSURL {
+        get {
+            return NSURL(string: self.thumbnailURLString)!
+        }
+    }
+    
     //MARK: Initializers
     func populate(json: JSON) {
         self.id = json["_id"].string ?? ""
@@ -28,7 +34,7 @@ extension EventPhotoModel {
         
         self.displayURLString = json["display"].string ?? ""
         self.processedURLString = json["processed"].string ?? ""
-        self.thumbNailURLString = json["thumbnail"].string ?? ""
+        self.thumbnailURLString = json["thumbnail"].string ?? ""
         let dateFormatter = NSDateFormatter()
         //TODO: Fix formatter
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
