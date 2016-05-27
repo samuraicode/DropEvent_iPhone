@@ -69,7 +69,7 @@ class EventsCollectionViewController: UICollectionViewController {
         if let eventThumbnailURL = event.thumbnailURL {
           cell.eventThumbnail.kf_setImageWithURL(eventThumbnailURL)
         }
-        cell.backgroundColor = UIColor.blueColor()
+        cell.backgroundColor = UIColor.whiteColor()
     
         // Configure the cell
     

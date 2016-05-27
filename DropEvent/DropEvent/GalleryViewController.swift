@@ -12,8 +12,9 @@ import RxCocoa
 import Kingfisher
 
 private let simpleEventReuseIdentifier = "PhotoCellIdentifier"
+private let sectionHeaderReuseIdentifier = "SectionHeaderIdentifier"
 
-class GalleryViewController: UICollectionViewController {
+class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let viewModel = SingleEventViewModel()
     var eventTag = "sample"
@@ -75,6 +76,21 @@ class GalleryViewController: UICollectionViewController {
         // Configure the cell
         
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: sectionHeaderReuseIdentifier, forIndexPath: indexPath) as! SectionHeaderView
+        let headerName = self.viewModel.labelForSection(indexPath.section)
+        header.sectionName.text = headerName
+        return header
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let headerName = self.viewModel.labelForSection(section)
+        if headerName == "" {
+            return CGSize(width: collectionView.bounds.width, height: 10)
+        }
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
     
     // MARK: UICollectionViewDelegate

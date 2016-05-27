@@ -45,6 +45,18 @@ class SearchEventsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if segue.destinationViewController is GalleryViewController {
+            (segue.destinationViewController as! GalleryViewController).eventTag = (sender as! SearchResultTableViewCell).eventTag
+        }
+    }
+
 
     // MARK: - Table view data source
 
@@ -63,6 +75,7 @@ class SearchEventsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("SearchResultCell", forIndexPath: indexPath) as! SearchResultTableViewCell
         let event = self.viewModel.eventFor(indexPath)
         cell.eventName.text = event.name
+        cell.eventTag = event.tagLower
         if let eventThumbnailURL = event.thumbnailURL {
             cell.eventThumbnail.kf_setImageWithURL(eventThumbnailURL)
         }
@@ -102,16 +115,6 @@ class SearchEventsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 

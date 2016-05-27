@@ -55,11 +55,11 @@ class SingleEventViewModel  {
                                 }
                             }
                             self.dropevent.folders!.insert(newEventFolderModel)
-                            self.folders.append(newEventFolderModel)
+                            if newEventFolderModel.photos?.count > 0 {
+                                self.folders.append(newEventFolderModel)
+                            }
                         }
                     }
-                    print("Populated")
-                    print(self.dropevent.folders!.count)
                     self.loadedEvent.raise(true)
                 default:
                     print("Failed to get event")
@@ -69,7 +69,11 @@ class SingleEventViewModel  {
     }
     
     func numberOfSections() -> Int {
-        return self.dropevent.folders!.count
+        return self.folders.count
+    }
+    
+    func labelForSection(section: Int) -> String {
+        return self.folders[section].name
     }
     
     func photosForSection(section: Int) -> Int {

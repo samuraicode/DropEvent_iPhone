@@ -13,6 +13,8 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventThumbnail: UIImageView!
     
+    var eventTag: String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
