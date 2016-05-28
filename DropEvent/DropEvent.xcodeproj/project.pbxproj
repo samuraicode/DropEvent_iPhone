@@ -15,8 +15,9 @@
 		3F4F5D681CF8BCD100516831 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D671CF8BCD100516831 /* SectionHeaderView.swift */; };
 		3F4F5D6C1CF8C3A400516831 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F5D6A1CF8C3A400516831 /* logo.png */; };
 		3F4F5D6D1CF8C3A400516831 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F5D6B1CF8C3A400516831 /* logo@2x.png */; };
+		3F4F5D6F1CF9691B00516831 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D6E1CF9691B00516831 /* ShowViewController.swift */; };
+		3F4F5D711CF96A6F00516831 /* ShowPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5D701CF96A6F00516831 /* ShowPhotoCell.swift */; };
 		3F94B7131C1A9B0C00A99677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */; };
-		3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F94B7141C1A9B0C00A99677 /* ViewController.swift */; };
 		3F94B7181C1A9B0C00A99677 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F94B7161C1A9B0C00A99677 /* Main.storyboard */; };
 		3F94B71A1C1A9B0C00A99677 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F94B7191C1A9B0C00A99677 /* Assets.xcassets */; };
 		3F94B71D1C1A9B0C00A99677 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F94B71B1C1A9B0C00A99677 /* LaunchScreen.storyboard */; };
@@ -89,9 +90,10 @@
 		3F4F5D671CF8BCD100516831 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		3F4F5D6A1CF8C3A400516831 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		3F4F5D6B1CF8C3A400516831 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		3F4F5D6E1CF9691B00516831 /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		3F4F5D701CF96A6F00516831 /* ShowPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPhotoCell.swift; sourceTree = "<group>"; };
 		3F94B70F1C1A9B0C00A99677 /* DropEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F94B7141C1A9B0C00A99677 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F94B7171C1A9B0C00A99677 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F94B7191C1A9B0C00A99677 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F94B71C1C1A9B0C00A99677 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -187,6 +189,8 @@
 				3F4F5D601CF6556600516831 /* GalleryPhotoCell.swift */,
 				3F4F5D631CF6634C00516831 /* SingleEventViewModel.swift */,
 				3F4F5D671CF8BCD100516831 /* SectionHeaderView.swift */,
+				3F4F5D6E1CF9691B00516831 /* ShowViewController.swift */,
+				3F4F5D701CF96A6F00516831 /* ShowPhotoCell.swift */,
 			);
 			name = "Show Views";
 			sourceTree = "<group>";
@@ -230,7 +234,6 @@
 				8824711A1C2C936F0035C12C /* Models */,
 				3F94B7121C1A9B0C00A99677 /* AppDelegate.swift */,
 				8895540A1C7C33CC006F754B /* RootViewManagement.swift */,
-				3F94B7141C1A9B0C00A99677 /* ViewController.swift */,
 				3F94B7161C1A9B0C00A99677 /* Main.storyboard */,
 				3F94B7191C1A9B0C00A99677 /* Assets.xcassets */,
 				3F94B71B1C1A9B0C00A99677 /* LaunchScreen.storyboard */,
@@ -533,9 +536,9 @@
 				88FEC5181C4C4B6B002FB58E /* DropEventAPI.swift in Sources */,
 				889554091C7C2D29006F754B /* NetWorking.swift in Sources */,
 				8895540D1C7D6D11006F754B /* SimpleEventCollectionViewCell.swift in Sources */,
+				3F4F5D711CF96A6F00516831 /* ShowPhotoCell.swift in Sources */,
 				88E309A71C855FDE00A3441B /* EventFolderModel.swift in Sources */,
 				88B28BD71C699AA700DB8C30 /* SearchEventsViewModel.swift in Sources */,
-				3F94B7151C1A9B0C00A99677 /* ViewController.swift in Sources */,
 				88B28BDA1C699BC100DB8C30 /* SearchResultTableViewCell.swift in Sources */,
 				88FFFCDC1C4F316F00515B90 /* CoreDataStack.swift in Sources */,
 				88FFFCED1C4F419B00515B90 /* UserDBModel.swift in Sources */,
@@ -544,6 +547,7 @@
 				88FFFCEC1C4F419B00515B90 /* UserDBModel+CoreDataProperties.swift in Sources */,
 				88FFFCDF1C4F36EC00515B90 /* DropEventModel.xcdatamodeld in Sources */,
 				88E309A21C855FDE00A3441B /* EventPhotoModel+CoreDataProperties.swift in Sources */,
+				3F4F5D6F1CF9691B00516831 /* ShowViewController.swift in Sources */,
 				3F4F5D661CF8A26000516831 /* Notification.swift in Sources */,
 				882471241C2C98440035C12C /* EventPhotoModel+JSON.swift in Sources */,
 				3F4F5D5D1CF600CD00516831 /* EventSearchModel.swift in Sources */,

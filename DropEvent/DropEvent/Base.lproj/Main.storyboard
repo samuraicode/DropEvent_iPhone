@@ -235,6 +235,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="photoThumbnail" destination="ENS-Cp-U7x" id="akb-a1-iF3"/>
+                                    <segue destination="jPY-wY-5jQ" kind="show" id="jL5-3g-egV"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -279,40 +280,6 @@
             </objects>
             <point key="canvasLocation" x="1049" y="-374"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VUT-8L-iIF">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="AXK-Qf-tbK"/>
-                                    <constraint firstAttribute="width" constant="240" id="gdN-3N-FU5"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="VUT-8L-iIF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9bM-9q-vWd"/>
-                            <constraint firstItem="VUT-8L-iIF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oBa-4k-MrH"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="image" destination="VUT-8L-iIF" id="vXT-i2-IL0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1761" y="-374"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jaV-N9-17f">
             <objects>
@@ -348,6 +315,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4L-jY-Mrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="905" y="-1095"/>
+        </scene>
+        <!--Show View Controller-->
+        <scene sceneID="UcP-5N-KQP">
+            <objects>
+                <collectionViewController id="jPY-wY-5jQ" customClass="ShowViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="2re-ZS-oTt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="qRw-IF-ipC">
+                            <size key="itemSize" width="604" height="534"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BigPhotoCellIdentifier" id="XQO-Tl-6f0" customClass="ShowPhotoCell" customModule="DropEvent" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="65" width="604" height="534"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="604" height="534"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-Ug-8s4">
+                                            <rect key="frame" x="0.0" y="0.0" width="604" height="534"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="ySP-Ug-8s4" firstAttribute="leading" secondItem="XQO-Tl-6f0" secondAttribute="leading" id="Fvk-J4-9le"/>
+                                    <constraint firstAttribute="trailing" secondItem="ySP-Ug-8s4" secondAttribute="trailing" id="TGH-4W-YGC"/>
+                                    <constraint firstItem="ySP-Ug-8s4" firstAttribute="top" secondItem="XQO-Tl-6f0" secondAttribute="top" id="cQI-58-wxV"/>
+                                    <constraint firstAttribute="bottom" secondItem="ySP-Ug-8s4" secondAttribute="bottom" id="l9w-gE-yP8"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="photoDisplay" destination="ySP-Ug-8s4" id="tAu-a9-0zv"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="jPY-wY-5jQ" id="j5i-E9-zHf"/>
+                            <outlet property="delegate" destination="jPY-wY-5jQ" id="TGo-wN-cf7"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="2re-ZS-oTt" id="cYE-Ks-mZi"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5h-DX-1J3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1751" y="-336"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

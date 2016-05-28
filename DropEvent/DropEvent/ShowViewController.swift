@@ -1,4 +1,12 @@
 //
+//  ShowViewController.swift
+//  DropEvent
+//
+//  Created by Jeremy Noonan on 5/27/16.
+//  Copyright © 2016 SamuraiCode. All rights reserved.
+//
+
+//
 //  GalleryViewController.swift
 //  DropEvent
 //
@@ -11,20 +19,21 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-private let simpleEventReuseIdentifier = "PhotoCellIdentifier"
-private let sectionHeaderReuseIdentifier = "SectionHeaderIdentifier"
+private let simplePhotoReuseIdentifier = "BigPhotoCellIdentifier"
 
-class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ShowViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let viewModel = SingleEventViewModel()
-    var eventTag = "sample"
-        
+    var viewModel: SingleEventViewModel!
+    var cellWidth: Int = 100
+    var cellHeight: Int = 100
+    // variable keep track that view appear or not.
+    // we have to load collection view after view appear so correct cell size achieved.
+    var isViewAppear: Bool = false
+    
+    @IBOutlet var photoCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.getEvent(eventTag)
-        viewModel.loadedEvent.addHandler(self, handler: GalleryViewController.handleLoaded)
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,9 +41,13 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         // Do any additional setup after loading the view.
     }
     
-    func handleLoaded(result: (Bool)) {
-        print("Success: \(result)")
-        self.collectionView?.reloadData()
+    override func viewDidAppear(animated: Bool) {
+        // set view as appear
+        self.isViewAppear = true
+        
+        // Calculate cell width, height based on screen width
+        self.calculateCellWidthHeight()
+        self.photoCollectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,57 +55,58 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
+    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      // Get the new view controller using [segue destinationViewController].
      // Pass the selected object to the new view controller.
-        if segue.destinationViewController is ShowViewController {
-            (segue.destinationViewController as! ShowViewController).viewModel = viewModel
-        }
      }
+     */
     
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return self.viewModel.numberOfSections()
+        return 1
     }
     
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.photosForSection(section)
+        if self.isViewAppear {
+            return self.viewModel.photosForSection(section)
+        } else {
+            return 0
+        }
+    }
+    
+    // return width and height of cell
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: self.cellWidth, height: self.cellHeight)
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simpleEventReuseIdentifier, forIndexPath: indexPath) as! GalleryPhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simplePhotoReuseIdentifier, forIndexPath: indexPath) as! ShowPhotoCell
         if let photo = self.viewModel.photoForSectionAndIndex(indexPath.section, index: indexPath.item) {
-            cell.photoThumbnail.kf_setImageWithURL(photo.thumbnailURL)
+            cell.photoDisplay.kf_setImageWithURL(photo.displayURL)
         }
         cell.backgroundColor = UIColor.whiteColor()
         
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: sectionHeaderReuseIdentifier, forIndexPath: indexPath) as! SectionHeaderView
-        let headerLabel = self.viewModel.labelForSection(indexPath.section)
-        header.sectionName.text = headerLabel.name
-        var descriptor = "photos"
-        if (headerLabel.count == 1) {
-            descriptor = "photo"
-        }
-        header.sectionCount.text = "\(headerLabel.count) \(descriptor)"
-        return header
-    }
+    // MARK: - Utility functions
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerName = self.viewModel.labelForSection(section).name
-        if headerName == "" {
-            return CGSize(width: collectionView.bounds.width, height: 10)
-        }
-        return CGSize(width: collectionView.bounds.width, height: 50)
+    // calculate collection view cell width same as full screen
+    private func calculateCellWidthHeight() {
+        
+        // find cell width same as screen width
+        self.cellWidth = Int(self.photoCollectionView.frame.width)
+        
+        // find cell height
+        self.cellHeight = Int(self.photoCollectionView.frame.height) - 64  // deduct nav bar and status bar height
     }
+
     
     // MARK: UICollectionViewDelegate
     
@@ -126,3 +140,4 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
      */
     
 }
+
