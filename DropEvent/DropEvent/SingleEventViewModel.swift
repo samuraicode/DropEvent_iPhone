@@ -35,7 +35,6 @@ class SingleEventViewModel  {
     
     func getEvent(lowerTag: String) -> Void {
         dropEventProvider.request(.GetByTag(tag: lowerTag)) { response in
-            print(response.value)
             let response = response.value
             switch response!.statusCode {
                 case 200:
@@ -72,8 +71,8 @@ class SingleEventViewModel  {
         return self.folders.count
     }
     
-    func labelForSection(section: Int) -> String {
-        return self.folders[section].name
+    func labelForSection(section: Int) -> (name: String, count: Int) {
+        return (self.folders[section].name, self.folders[section].photos!.count)
     }
     
     func photosForSection(section: Int) -> Int {

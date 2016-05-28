@@ -10,4 +10,5 @@ import UIKit
 
 class SectionHeaderView: UICollectionReusableView {
     @IBOutlet weak var sectionName: UILabel!
+    @IBOutlet weak var sectionCount: UILabel!
 }

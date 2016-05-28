@@ -22,7 +22,6 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(eventTag)
         viewModel.getEvent(eventTag)
         viewModel.loadedEvent.addHandler(self, handler: GalleryViewController.handleLoaded)
         
@@ -56,13 +55,11 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return self.viewModel.numberOfSections()
     }
     
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return self.viewModel.photosForSection(section)
     }
     
@@ -73,20 +70,23 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         }
         cell.backgroundColor = UIColor.whiteColor()
         
-        // Configure the cell
-        
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: sectionHeaderReuseIdentifier, forIndexPath: indexPath) as! SectionHeaderView
-        let headerName = self.viewModel.labelForSection(indexPath.section)
-        header.sectionName.text = headerName
+        let headerLabel = self.viewModel.labelForSection(indexPath.section)
+        header.sectionName.text = headerLabel.name
+        var descriptor = "photos"
+        if (headerLabel.count == 1) {
+            descriptor = "photo"
+        }
+        header.sectionCount.text = "\(headerLabel.count) \(descriptor)"
         return header
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerName = self.viewModel.labelForSection(section)
+        let headerName = self.viewModel.labelForSection(section).name
         if headerName == "" {
             return CGSize(width: collectionView.bounds.width, height: 10)
         }
