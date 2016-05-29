@@ -24,6 +24,7 @@ private let simplePhotoReuseIdentifier = "BigPhotoCellIdentifier"
 class ShowViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var viewModel: SingleEventViewModel!
+    var photoIndex : Int = 0
     var cellWidth: Int = 100
     var cellHeight: Int = 100
     // variable keep track that view appear or not.
@@ -48,6 +49,11 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
         // Calculate cell width, height based on screen width
         self.calculateCellWidthHeight(nil)
         self.photoCollectionView.reloadData()
+        
+        if (self.photoIndex > 0) {
+            let photoPath = NSIndexPath.init(forItem: self.photoIndex, inSection: 0)
+            self.photoCollectionView.scrollToItemAtIndexPath(photoPath, atScrollPosition: .CenteredHorizontally, animated: true )
+        }
     }
     
     override func didReceiveMemoryWarning() {

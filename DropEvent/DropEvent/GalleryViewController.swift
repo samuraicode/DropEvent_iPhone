@@ -49,7 +49,9 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
      // Get the new view controller using [segue destinationViewController].
      // Pass the selected object to the new view controller.
         if segue.destinationViewController is ShowViewController {
-            (segue.destinationViewController as! ShowViewController).viewModel = viewModel
+            let showController = segue.destinationViewController as! ShowViewController
+            showController.viewModel = viewModel
+            showController.photoIndex = (sender as! GalleryPhotoCell).sectionIndex
         }
      }
 
@@ -70,8 +72,8 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         if let photo = self.viewModel.photoForSectionAndIndex(indexPath.section, index: indexPath.item) {
             cell.photoThumbnail.kf_setImageWithURL(photo.thumbnailURL)
         }
+        cell.sectionIndex = indexPath.item
         cell.backgroundColor = UIColor.whiteColor()
-        cell.photoThumbnail.layer.cornerRadius = CGFloat(40)
         
         return cell
     }
