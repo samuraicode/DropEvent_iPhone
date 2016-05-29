@@ -70,6 +70,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
             cell.photoThumbnail.kf_setImageWithURL(photo.thumbnailURL)
         }
         cell.backgroundColor = UIColor.whiteColor()
+        cell.photoThumbnail.layer.cornerRadius = CGFloat(10)
         
         return cell
     }
