@@ -46,7 +46,7 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
         self.isViewAppear = true
         
         // Calculate cell width, height based on screen width
-        self.calculateCellWidthHeight()
+        self.calculateCellWidthHeight(nil)
         self.photoCollectionView.reloadData()
     }
     
@@ -95,16 +95,26 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
         return cell
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        self.calculateCellWidthHeight(size)
+        self.collectionView!.performBatchUpdates(nil, completion: nil)
+    }
+    
     // MARK: - Utility functions
     
     // calculate collection view cell width same as full screen
-    private func calculateCellWidthHeight() {
+    private func calculateCellWidthHeight(size: CGSize!) {
         
-        // find cell width same as screen width
-        self.cellWidth = Int(self.photoCollectionView.frame.width)
-        
-        // find cell height
-        self.cellHeight = Int(self.photoCollectionView.frame.height) - 64  // deduct nav bar and status bar height
+        if size == nil {
+            // find cell width same as screen width
+            self.cellWidth = Int(self.photoCollectionView.frame.width)
+            
+            // find cell height
+            self.cellHeight = Int(self.photoCollectionView.frame.height) - 64  // deduct nav bar and status bar height
+        } else {
+            self.cellWidth = Int(size.width)
+            self.cellHeight = Int(size.height) - 64
+        }
     }
 
     

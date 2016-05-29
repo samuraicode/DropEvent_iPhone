@@ -52,6 +52,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
             (segue.destinationViewController as! ShowViewController).viewModel = viewModel
         }
      }
+
     
     // MARK: UICollectionViewDataSource
     
@@ -70,7 +71,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
             cell.photoThumbnail.kf_setImageWithURL(photo.thumbnailURL)
         }
         cell.backgroundColor = UIColor.whiteColor()
-        cell.photoThumbnail.layer.cornerRadius = CGFloat(10)
+        cell.photoThumbnail.layer.cornerRadius = CGFloat(40)
         
         return cell
     }
@@ -88,10 +89,10 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerName = self.viewModel.labelForSection(section).name
-        if headerName == "" {
-            return CGSize(width: collectionView.bounds.width, height: 10)
-        }
+//        let headerName = self.viewModel.labelForSection(section).name
+//        if headerName == "" {
+//            return CGSize(width: collectionView.bounds.width, height: 10)
+//        }
         return CGSize(width: collectionView.bounds.width, height: 50)
     }
     
