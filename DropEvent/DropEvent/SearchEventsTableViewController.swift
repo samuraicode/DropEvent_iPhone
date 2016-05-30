@@ -79,6 +79,11 @@ class SearchEventsTableViewController: UITableViewController {
         if let eventThumbnailURL = event.thumbnailURL {
             cell.eventThumbnail.kf_setImageWithURL(eventThumbnailURL)
         }
+        
+        // Rounded corners
+        cell.eventThumbnail.layer.cornerRadius = cell.eventThumbnail.frame.size.width / 8
+        cell.eventThumbnail.clipsToBounds = true
+        
         return cell
     }
 

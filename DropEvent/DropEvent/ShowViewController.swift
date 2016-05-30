@@ -25,6 +25,8 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     var viewModel: SingleEventViewModel!
     var photoIndex : Int = 0
+    var photoPath = NSIndexPath.init(forItem: 0, inSection: 0)
+    var sectionIndex : Int = 0
     var cellWidth: Int = 100
     var cellHeight: Int = 100
     // variable keep track that view appear or not.
@@ -51,8 +53,8 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
         self.photoCollectionView.reloadData()
         
         if (self.photoIndex > 0) {
-            let photoPath = NSIndexPath.init(forItem: self.photoIndex, inSection: 0)
-            self.photoCollectionView.scrollToItemAtIndexPath(photoPath, atScrollPosition: .CenteredHorizontally, animated: true )
+            photoPath = NSIndexPath.init(forItem: self.photoIndex, inSection: 0)
+            self.photoCollectionView.scrollToItemAtIndexPath(photoPath, atScrollPosition: .CenteredHorizontally, animated: false )
         }
     }
     
@@ -80,7 +82,7 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.isViewAppear {
-            return self.viewModel.photosForSection(section)
+            return self.viewModel.photosForSection(sectionIndex)
         } else {
             return 0
         }
@@ -93,8 +95,8 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simplePhotoReuseIdentifier, forIndexPath: indexPath) as! ShowPhotoCell
-        if let photo = self.viewModel.photoForSectionAndIndex(indexPath.section, index: indexPath.item) {
-            cell.photoDisplay.kf_setImageWithURL(photo.displayURL)
+        if let photo = self.viewModel.photoForSectionAndIndex(sectionIndex, index: indexPath.item) {
+            cell.photoDisplay.kf_setImageWithURL(photo.displayURL, placeholderImage: nil, optionsInfo: [.Transition(ImageTransition.Fade(1))])
         }
         cell.backgroundColor = UIColor.whiteColor()
         
@@ -102,24 +104,38 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        let visibleRect = CGRect.init(origin: self.collectionView!.contentOffset, size: self.collectionView!.bounds.size)
+        let visiblePoint = CGPoint.init(x: CGRectGetMidX(visibleRect), y: CGRectGetMidY(visibleRect))
+        photoPath = (self.collectionView?.indexPathForItemAtPoint(visiblePoint))!
         self.calculateCellWidthHeight(size)
-        self.collectionView!.performBatchUpdates(nil, completion: nil)
+        self.collectionView?.alpha = CGFloat.init(0)
+        self.collectionView!.performBatchUpdates(nil, completion: { (Bool) -> Void in
+            self.photoCollectionView.scrollToItemAtIndexPath(self.photoPath, atScrollPosition: .CenteredHorizontally, animated: false )
+            self.collectionView?.alpha = CGFloat.init(1)
+        })
+        
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     // MARK: - Utility functions
     
     // calculate collection view cell width same as full screen
     private func calculateCellWidthHeight(size: CGSize!) {
-        
         if size == nil {
             // find cell width same as screen width
             self.cellWidth = Int(self.photoCollectionView.frame.width)
             
             // find cell height
-            self.cellHeight = Int(self.photoCollectionView.frame.height) - 64  // deduct nav bar and status bar height
+            self.cellHeight = Int(self.photoCollectionView.frame.height)
         } else {
             self.cellWidth = Int(size.width)
-            self.cellHeight = Int(size.height) - 64
+            self.cellHeight = Int(size.height)
+        }
+        
+        if self.cellWidth > self.cellHeight { // deduct nav bar and status bar height
+            self.cellHeight -= 32
+        } else {
+            self.cellHeight -= 64
         }
     }
 

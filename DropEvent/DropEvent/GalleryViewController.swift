@@ -51,7 +51,8 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         if segue.destinationViewController is ShowViewController {
             let showController = segue.destinationViewController as! ShowViewController
             showController.viewModel = viewModel
-            showController.photoIndex = (sender as! GalleryPhotoCell).sectionIndex
+            showController.photoIndex = (sender as! GalleryPhotoCell).itemIndex
+            showController.sectionIndex = (sender as! GalleryPhotoCell).sectionIndex
         }
      }
 
@@ -72,8 +73,13 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         if let photo = self.viewModel.photoForSectionAndIndex(indexPath.section, index: indexPath.item) {
             cell.photoThumbnail.kf_setImageWithURL(photo.thumbnailURL)
         }
-        cell.sectionIndex = indexPath.item
+        cell.sectionIndex = indexPath.section
+        cell.itemIndex = indexPath.item
         cell.backgroundColor = UIColor.whiteColor()
+        
+        // Rounded corners
+        cell.photoThumbnail.layer.cornerRadius = cell.photoThumbnail.frame.size.width / 8
+        cell.photoThumbnail.clipsToBounds = true
         
         return cell
     }

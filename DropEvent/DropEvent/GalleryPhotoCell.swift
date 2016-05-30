@@ -11,4 +11,5 @@ import UIKit
 class GalleryPhotoCell: UICollectionViewCell {
     @IBOutlet weak var photoThumbnail: UIImageView!
     var sectionIndex: Int = 0
+    var itemIndex: Int = 0
 }

@@ -71,8 +71,6 @@ class EventsCollectionViewController: UICollectionViewController {
         }
         cell.backgroundColor = UIColor.whiteColor()
     
-        // Configure the cell
-    
         return cell
     }
 
