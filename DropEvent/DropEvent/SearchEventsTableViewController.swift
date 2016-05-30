@@ -54,6 +54,7 @@ class SearchEventsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.destinationViewController is GalleryViewController {
             (segue.destinationViewController as! GalleryViewController).eventTag = (sender as! SearchResultTableViewCell).eventTag
+            segue.destinationViewController.navigationItem.title = (sender as! SearchResultTableViewCell).eventName.text
         }
     }
 

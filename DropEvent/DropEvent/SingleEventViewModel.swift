@@ -24,6 +24,8 @@ class SingleEventViewModel  {
     let loadedEvent = Notification<(Bool)>()
     
     var folders : [EventFolderModel]
+    
+    var photoArrays : [[EventPhotoModel]]
 
     init() {
         dropEventProvider = RxMoyaProvider(endpointClosure: endpointClosure, plugins: [])
@@ -31,6 +33,8 @@ class SingleEventViewModel  {
         dropevent = NSEntityDescription.insertNewObjectForEntityForName("EventModel", inManagedObjectContext: CoreDataStack.sharedInstance.mainObjectContext) as! EventModel
         
         folders = []
+        
+        photoArrays = []
     }
     
     func getEvent(lowerTag: String) -> Void {
@@ -45,17 +49,20 @@ class SingleEventViewModel  {
                         for folderJson in foldersJson {
                             let newEventFolderModel = NSEntityDescription.insertNewObjectForEntityForName("EventFolderModel", inManagedObjectContext: CoreDataStack.sharedInstance.mainObjectContext) as! EventFolderModel
                             newEventFolderModel.populate(folderJson)
+                            var photoArray: [EventPhotoModel] = []
                             if let photosJson = folderJson["photos"].array {
                                 newEventFolderModel.photos = []
                                 for photoJson in photosJson {
                                     let newEventPhotoModel = NSEntityDescription.insertNewObjectForEntityForName("EventPhotoModel", inManagedObjectContext: CoreDataStack.sharedInstance.mainObjectContext) as! EventPhotoModel
                                     newEventPhotoModel.populate(photoJson)
                                     newEventFolderModel.photos!.insert(newEventPhotoModel)
+                                    photoArray.append(newEventPhotoModel)
                                 }
                             }
                             self.dropevent.folders!.insert(newEventFolderModel)
                             if newEventFolderModel.photos?.count > 0 {
                                 self.folders.append(newEventFolderModel)
+                                self.photoArrays.append(photoArray)
                             }
                         }
                     }
@@ -80,8 +87,8 @@ class SingleEventViewModel  {
     }
     
     func photoForSectionAndIndex(section: Int, index: Int) -> EventPhotoModel? {
-        let photos = self.folders[section].photos!
-        return photos[photos.startIndex.advancedBy(index)]
+        let photos = self.photoArrays[section]
+        return photos[index]
     }
     
 }

@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search Events Table View Controller-->
+        <!--Search-->
         <scene sceneID="R9S-sp-mz8">
             <objects>
                 <tableViewController id="fuq-BC-kN4" customClass="SearchEventsTableViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                             <outlet property="delegate" destination="fuq-BC-kN4" id="3nH-px-zii"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WYh-Xa-4GU">
+                    <navigationItem key="navigationItem" title="Search" id="WYh-Xa-4GU">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xqz-0x-80S">
                             <connections>
                                 <action selector="cancelButton:" destination="fuq-BC-kN4" id="3hy-87-Bjo"/>
@@ -134,7 +134,7 @@
             </objects>
             <point key="canvasLocation" x="-109" y="-714"/>
         </scene>
-        <!--Events Collection View Controller-->
+        <!--My Events-->
         <scene sceneID="DL5-cZ-npa">
             <objects>
                 <collectionViewController id="RhL-Qa-fUp" customClass="EventsCollectionViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,8 +193,8 @@
                             <outlet property="delegate" destination="RhL-Qa-fUp" id="fS9-5s-XOh"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="FIP-t7-R07">
-                        <barButtonItem key="leftBarButtonItem" title="Search" id="OJI-ku-esp">
+                    <navigationItem key="navigationItem" title="My Events" id="FIP-t7-R07">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="OJI-ku-esp">
                             <connections>
                                 <segue destination="e9M-5i-pW5" kind="presentation" id="mT2-We-e3m"/>
                             </connections>
@@ -205,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="1719" y="-1095"/>
         </scene>
-        <!--Gallery View Controller-->
+        <!--Title-->
         <scene sceneID="z1H-pR-GNb">
             <objects>
                 <collectionViewController id="AQZ-rW-kBQ" customClass="GalleryViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
@@ -275,6 +275,7 @@
                             <outlet property="delegate" destination="AQZ-rW-kBQ" id="8CB-YG-VpZ"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Title" id="aCQ-gR-BU8"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZI-XZ-2fZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,6 +371,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CcM-0l-mpF"/>
+        <segue reference="ANK-O4-efM"/>
     </inferredMetricsTieBreakers>
 </document>

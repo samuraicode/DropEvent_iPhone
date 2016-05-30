@@ -64,7 +64,8 @@ class EventsViewModel {
     
     var numberOfSections: Int {
         get {
-            return 1 + self.contributedEvents.count > 0 ? 1 : 0
+            let contribCount = self.contributedEvents.count > 0 ? 1 : 0
+            return (1 + contribCount)
         }
     }
     
@@ -80,7 +81,11 @@ class EventsViewModel {
     }
     
     func event(forIndexPath indexPath: NSIndexPath) -> EventModel {
-        return self.myEvents[indexPath.row]
+        if indexPath.section == 0 {
+            return self.myEvents[indexPath.row]
+        } else {
+            return self.contributedEvents[indexPath.row]
+        }
     }
     
     func add(myEventsJson: [JSON]?, contributedEventsJson: [JSON]?) -> (myEvent:[EventModel],contributedEvent:[EventModel]) {
@@ -106,7 +111,6 @@ class EventsViewModel {
                                 for folderJson in foldersJson {
                                     let newEventFolderModel: EventFolderModel = transaction.create(Into(EventFolderModel))
                                     newEventFolderModel.populate(folderJson)
-                                    
                                     if let photosJson = folderJson["photos"].array {
                                         newEventFolderModel.photos = []
                                         for photoJson in photosJson {

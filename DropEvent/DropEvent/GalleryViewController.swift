@@ -25,7 +25,6 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         viewModel.getEvent(eventTag)
         viewModel.loadedEvent.addHandler(self, handler: GalleryViewController.handleLoaded)
         
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -56,13 +55,11 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         }
      }
 
-    
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return self.viewModel.numberOfSections()
     }
-    
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.photosForSection(section)

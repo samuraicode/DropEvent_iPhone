@@ -45,6 +45,7 @@ class EventsCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
         if segue.destinationViewController is GalleryViewController {
             (segue.destinationViewController as! GalleryViewController).eventTag = (sender as! SimpleEventCollectionViewCell).eventTag
+            segue.destinationViewController.navigationItem.title = (sender as! SimpleEventCollectionViewCell).eventName.text
         }
     }
 
@@ -54,7 +55,6 @@ class EventsCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of sections
         return self.viewModel.numberOfSections
     }
-
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
