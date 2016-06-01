@@ -89,10 +89,8 @@ class EventsCollectionViewController: UICollectionViewController, UICollectionVi
         cell.eventDescription.text = event.eventDescription
         if event.isModerated.boolValue {
             cell.eventModerated.alpha = 1.0
-            cell.eventLockIcon.alpha = 1.0
         } else {
             cell.eventModerated.alpha = 0
-            cell.eventLockIcon.alpha = 0
         }
         if event.photoCount == 1 {
             cell.eventPhotoCount.text = "\(event.photoCount) photo"
@@ -105,6 +103,8 @@ class EventsCollectionViewController: UICollectionViewController, UICollectionVi
         }
         
         // Rounded corners
+        cell.eventThumbnail.layer.borderWidth = 1.0
+        cell.eventThumbnail.layer.borderColor = UIColor.blueColor().CGColor
         cell.eventThumbnail.layer.cornerRadius = cell.eventThumbnail.frame.size.width / 8
         cell.eventThumbnail.clipsToBounds = true
     
