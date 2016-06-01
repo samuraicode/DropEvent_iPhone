@@ -151,7 +151,7 @@
                             <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="SimpleEventIdentifier" id="A5Q-V7-M7X" customClass="SimpleEventCollectionViewCell" customModule="DropEvent" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="SimpleEventIdentifier" id="A5Q-V7-M7X" customClass="SimpleEventCollectionViewCell" customModule="DropEvent" customModuleProvider="target">
                                 <rect key="frame" x="100" y="69" width="400" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -174,49 +174,59 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Photos" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAf-90-oeV">
                                             <rect key="frame" x="263" y="131" width="129" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="129" id="GvZ-U7-nKf"/>
+                                                <constraint firstAttribute="width" constant="129" id="6fA-Mj-TcO"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moderated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGN-ex-RqG">
-                                            <rect key="frame" x="159" y="131" width="86" height="21"/>
+                                            <rect key="frame" x="186" y="131" width="86" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="86" id="Oh3-Je-5yt"/>
+                                                <constraint firstAttribute="width" constant="86" id="2da-EK-aAa"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="262-Bc-mMc">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="262-Bc-mMc">
                                             <rect key="frame" x="8" y="8" width="141" height="141"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock-2-locked.png" translatesAutoresizingMaskIntoConstraints="NO" id="YqX-Wj-5ui">
+                                            <rect key="frame" x="160" y="127" width="22" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="daj-75-WxN"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="nAf-90-oeV" firstAttribute="baseline" secondItem="iGN-ex-RqG" secondAttribute="firstBaseline" id="4IB-YD-HEQ"/>
-                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="top" secondItem="ZaV-7F-nKl" secondAttribute="bottom" constant="3" id="8uA-GE-6Nw"/>
-                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="trailing" secondItem="nAf-90-oeV" secondAttribute="trailing" id="Cf2-wa-iZY"/>
-                                    <constraint firstItem="iGN-ex-RqG" firstAttribute="top" secondItem="dll-vX-Eyk" secondAttribute="bottom" constant="15" id="ENl-4Z-Z6n"/>
-                                    <constraint firstItem="262-Bc-mMc" firstAttribute="top" secondItem="ZaV-7F-nKl" secondAttribute="top" id="Efo-9b-4QI"/>
-                                    <constraint firstItem="iGN-ex-RqG" firstAttribute="baseline" secondItem="nAf-90-oeV" secondAttribute="baseline" id="G5B-f1-Cl7"/>
-                                    <constraint firstItem="262-Bc-mMc" firstAttribute="top" secondItem="A5Q-V7-M7X" secondAttribute="topMargin" id="Kbd-74-QBb"/>
-                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="trailing" secondItem="A5Q-V7-M7X" secondAttribute="trailingMargin" id="Mfr-ey-WMC"/>
-                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="trailing" secondItem="dll-vX-Eyk" secondAttribute="trailing" id="RrY-qh-Spb"/>
-                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="centerX" secondItem="dll-vX-Eyk" secondAttribute="centerX" id="U7V-U3-P4G"/>
-                                    <constraint firstItem="262-Bc-mMc" firstAttribute="leading" secondItem="A5Q-V7-M7X" secondAttribute="leadingMargin" id="a4f-xx-P6j"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="262-Bc-mMc" secondAttribute="bottom" constant="3" id="czp-IT-Bt9"/>
-                                    <constraint firstItem="nAf-90-oeV" firstAttribute="leading" secondItem="iGN-ex-RqG" secondAttribute="trailing" constant="18" id="eHB-6X-LuH"/>
-                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="leading" secondItem="iGN-ex-RqG" secondAttribute="leading" id="fU1-rC-oAr"/>
-                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="leading" secondItem="262-Bc-mMc" secondAttribute="trailing" constant="9" id="irl-Cp-rhM"/>
-                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="centerY" secondItem="A5Q-V7-M7X" secondAttribute="centerY" id="k0g-i6-EFj"/>
-                                    <constraint firstItem="iGN-ex-RqG" firstAttribute="bottom" secondItem="A5Q-V7-M7X" secondAttribute="bottomMargin" id="nxS-v0-jP5"/>
+                                    <constraint firstItem="YqX-Wj-5ui" firstAttribute="leading" secondItem="262-Bc-mMc" secondAttribute="trailing" constant="11" id="1mX-Px-0VC"/>
+                                    <constraint firstItem="nAf-90-oeV" firstAttribute="leading" secondItem="YqX-Wj-5ui" secondAttribute="trailing" constant="81" id="BfP-Wr-QEF"/>
+                                    <constraint firstItem="YqX-Wj-5ui" firstAttribute="top" secondItem="dll-vX-Eyk" secondAttribute="bottom" constant="11" id="Kid-3u-OFz"/>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="trailing" secondItem="dll-vX-Eyk" secondAttribute="trailing" id="L20-mo-J32"/>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="centerX" secondItem="dll-vX-Eyk" secondAttribute="centerX" id="O2c-cw-JWG"/>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="trailing" secondItem="A5Q-V7-M7X" secondAttribute="trailingMargin" id="Obt-4b-8XV"/>
+                                    <constraint firstItem="YqX-Wj-5ui" firstAttribute="bottom" secondItem="iGN-ex-RqG" secondAttribute="bottom" id="Sb5-xC-lxJ"/>
+                                    <constraint firstItem="262-Bc-mMc" firstAttribute="leading" secondItem="A5Q-V7-M7X" secondAttribute="leadingMargin" id="VZV-Mg-DRt"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="262-Bc-mMc" secondAttribute="bottom" constant="3" id="VfN-J6-QKj"/>
+                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="trailing" secondItem="nAf-90-oeV" secondAttribute="trailing" id="csG-1v-vGl"/>
+                                    <constraint firstItem="262-Bc-mMc" firstAttribute="top" secondItem="A5Q-V7-M7X" secondAttribute="topMargin" id="dBW-Mb-TQz"/>
+                                    <constraint firstItem="ZaV-7F-nKl" firstAttribute="leading" secondItem="262-Bc-mMc" secondAttribute="trailing" constant="9" id="dXb-qo-hs9"/>
+                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="top" secondItem="ZaV-7F-nKl" secondAttribute="bottom" constant="3" id="jml-Ge-i9H"/>
+                                    <constraint firstItem="iGN-ex-RqG" firstAttribute="baseline" secondItem="nAf-90-oeV" secondAttribute="baseline" id="rbt-QN-5bY"/>
+                                    <constraint firstItem="iGN-ex-RqG" firstAttribute="leading" secondItem="YqX-Wj-5ui" secondAttribute="trailing" constant="4" id="uZl-Qf-WBl"/>
+                                    <constraint firstItem="262-Bc-mMc" firstAttribute="top" secondItem="ZaV-7F-nKl" secondAttribute="top" id="veh-OB-OGU"/>
+                                    <constraint firstItem="nAf-90-oeV" firstAttribute="baseline" secondItem="iGN-ex-RqG" secondAttribute="firstBaseline" id="vfE-Tb-thE"/>
+                                    <constraint firstItem="dll-vX-Eyk" firstAttribute="centerY" secondItem="A5Q-V7-M7X" secondAttribute="centerY" id="vkr-Zw-02D"/>
+                                    <constraint firstItem="YqX-Wj-5ui" firstAttribute="bottom" secondItem="A5Q-V7-M7X" secondAttribute="bottomMargin" id="x9I-Fp-jxD"/>
+                                    <constraint firstItem="iGN-ex-RqG" firstAttribute="top" secondItem="dll-vX-Eyk" secondAttribute="bottom" constant="15" id="xgV-ae-UEW"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="eventDescription" destination="dll-vX-Eyk" id="dTV-NL-gUI"/>
+                                    <outlet property="eventLockIcon" destination="YqX-Wj-5ui" id="gma-VP-q1i"/>
                                     <outlet property="eventModerated" destination="iGN-ex-RqG" id="OqL-qu-Ohm"/>
                                     <outlet property="eventName" destination="ZaV-7F-nKl" id="i1o-dg-kt3"/>
                                     <outlet property="eventPhotoCount" destination="nAf-90-oeV" id="7Wo-iF-Eu6"/>
@@ -410,6 +420,9 @@
             <point key="canvasLocation" x="1751" y="-336"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lock-2-locked.png" width="48" height="48"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ANK-O4-efM"/>
     </inferredMetricsTieBreakers>

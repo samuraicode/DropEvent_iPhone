@@ -14,6 +14,7 @@ class SimpleEventCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var eventModerated: UILabel!
     @IBOutlet weak var eventPhotoCount: UILabel!
+    @IBOutlet weak var eventLockIcon: UIImageView!
     
     var eventTag: String!
 }

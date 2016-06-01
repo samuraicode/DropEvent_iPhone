@@ -16,11 +16,11 @@ private let simpleEventReuseIdentifier = "SimpleEventIdentifier"
 class EventsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let viewModel = EventsViewModel()
-    var cellWidth: Int = 100
-    var cellHeight: Int = 160
-    // variable keep track that view appear or not.
-    // we have to load collection view after view appear so correct cell size achieved.
-    var isViewAppear: Bool = false
+//    var cellWidth: Int = 100
+//    var cellHeight: Int = 160
+//    // variable keep track that view appear or not.
+//    // we have to load collection view after view appear so correct cell size achieved.
+//    var isViewAppear: Bool = false
     
     @IBOutlet var eventCollectionView: UICollectionView!
 
@@ -39,14 +39,14 @@ class EventsCollectionViewController: UICollectionViewController, UICollectionVi
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        // set view as appear
-        self.isViewAppear = true
-        
-        // Calculate cell width, height based on screen width
-        self.calculateCellWidthHeight(nil)
-        self.eventCollectionView.reloadData()
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        // set view as appear
+//        self.isViewAppear = true
+//        
+//        // Calculate cell width, height based on screen width
+//        self.calculateCellWidthHeight(nil)
+//        self.eventCollectionView.reloadData()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,9 +68,9 @@ class EventsCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: UICollectionViewDataSource
     
     // return width and height of cell
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.cellWidth, height: self.cellHeight)
-    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        return CGSize(width: self.cellWidth, height: self.cellHeight)
+//    }
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -89,8 +89,10 @@ class EventsCollectionViewController: UICollectionViewController, UICollectionVi
         cell.eventDescription.text = event.eventDescription
         if event.isModerated.boolValue {
             cell.eventModerated.alpha = 1.0
+            cell.eventLockIcon.alpha = 1.0
         } else {
             cell.eventModerated.alpha = 0
+            cell.eventLockIcon.alpha = 0
         }
         if event.photoCount == 1 {
             cell.eventPhotoCount.text = "\(event.photoCount) photo"
@@ -109,30 +111,30 @@ class EventsCollectionViewController: UICollectionViewController, UICollectionVi
         return cell
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        self.calculateCellWidthHeight(size)
-        
-        self.eventCollectionView.alpha = CGFloat.init(0)
-        self.eventCollectionView.performBatchUpdates(nil, completion: { (Bool) -> Void in
-            self.eventCollectionView.alpha = CGFloat.init(1)
-        })
-        
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-    }
+//    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        self.calculateCellWidthHeight(size)
+//        
+//        self.eventCollectionView.alpha = CGFloat.init(0)
+//        self.eventCollectionView.performBatchUpdates(nil, completion: { (Bool) -> Void in
+//            self.eventCollectionView.alpha = CGFloat.init(1)
+//        })
+//        
+//        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+//    }
     
     // MARK: - Utility functions
     
     // calculate collection view cell width same as full screen
-    private func calculateCellWidthHeight(size: CGSize!) {
-        if size == nil {
-            // find cell width same as screen width
-            self.cellWidth = Int(self.eventCollectionView.frame.width)
-        } else {
-            self.cellWidth = Int(size.width)
-        }
-        
-        self.cellWidth -= 10
-    }
+//    private func calculateCellWidthHeight(size: CGSize!) {
+//        if size == nil {
+//            // find cell width same as screen width
+//            self.cellWidth = Int(self.eventCollectionView.frame.width)
+//        } else {
+//            self.cellWidth = Int(size.width)
+//        }
+//        
+//        self.cellWidth -= 10
+//    }
 
     // MARK: UICollectionViewDelegate
 
