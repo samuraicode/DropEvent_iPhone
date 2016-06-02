@@ -10,5 +10,6 @@ import UIKit
 
 class ShowPhotoCell: UICollectionViewCell {
     @IBOutlet weak var photoDisplay: UIImageView!
+    @IBOutlet weak var caption: UILabel!
     
 }

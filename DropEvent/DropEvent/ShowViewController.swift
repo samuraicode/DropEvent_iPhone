@@ -97,6 +97,12 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(simplePhotoReuseIdentifier, forIndexPath: indexPath) as! ShowPhotoCell
         if let photo = self.viewModel.photoForSectionAndIndex(sectionIndex, index: indexPath.item) {
             cell.photoDisplay.kf_setImageWithURL(photo.displayURL, placeholderImage: nil, optionsInfo: [.Transition(ImageTransition.Fade(1))])
+            if photo.caption != "" {
+                cell.caption.text = photo.caption
+                cell.caption.alpha = 1.0
+            } else {
+                cell.caption.alpha = 0
+            }
         }
         cell.backgroundColor = UIColor.whiteColor()
         

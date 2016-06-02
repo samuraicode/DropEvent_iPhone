@@ -79,10 +79,8 @@ class SearchEventsTableViewController: UITableViewController {
         cell.eventDescription.text = event.eventDescription
         if event.isModerated.boolValue {
             cell.eventModerated.alpha = 1.0
-            cell.eventLockIcon.alpha = 1.0
         } else {
             cell.eventModerated.alpha = 0
-            cell.eventLockIcon.alpha = 0
         }
         if event.photoCount == 1 {
             cell.eventPhotoCount.text = "\(event.photoCount) photo"

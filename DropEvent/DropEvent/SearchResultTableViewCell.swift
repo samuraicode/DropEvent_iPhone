@@ -14,7 +14,6 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var eventThumbnail: UIImageView!
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var eventModerated: UILabel!
-    @IBOutlet weak var eventLockIcon: UIImageView!
     @IBOutlet weak var eventPhotoCount: UILabel!
     
     var eventTag: String!
