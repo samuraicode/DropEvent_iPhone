@@ -200,14 +200,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-7F-nKl">
-                                            <rect key="frame" x="115" y="8" width="177" height="21"/>
+                                            <rect key="frame" x="115" y="8" width="177" height="20"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a description of the event and can have quite a bit of text in it" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dll-vX-Eyk">
-                                            <rect key="frame" x="115" y="30" width="177" height="55"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a description of the event and can have quite a bit of text in it" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dll-vX-Eyk">
+                                            <rect key="frame" x="115" y="24" width="177" height="67"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -275,6 +275,10 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="q8Q-J9-1MT">
+                            <rect key="frame" x="291" y="225" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCellIdentifier" id="jM5-nN-gob" customClass="GalleryPhotoCell" customModule="DropEvent" customModuleProvider="target">
                                 <rect key="frame" x="8" y="114" width="75" height="75"/>
@@ -283,7 +287,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENS-Cp-U7x">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENS-Cp-U7x">
                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                         </imageView>
                                     </subviews>
@@ -331,11 +335,49 @@
                             <outlet property="delegate" destination="AQZ-rW-kBQ" id="8CB-YG-VpZ"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="aCQ-gR-BU8"/>
+                    <navigationItem key="navigationItem" title="Title" id="aCQ-gR-BU8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KjR-N7-dwm">
+                            <connections>
+                                <segue destination="vIb-AE-558" kind="show" id="Xfp-Fy-yeU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activitySpinner" destination="q8Q-J9-1MT" id="ah8-vU-4E4"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZI-XZ-2fZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1049" y="-374"/>
+        </scene>
+        <!--Upload Photos-->
+        <scene sceneID="4h0-Xl-gqQ">
+            <objects>
+                <tableViewController id="vIb-AE-558" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FDc-lg-bI7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="L26-VO-iyb">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L26-VO-iyb" id="evS-hS-xr2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vIb-AE-558" id="1SC-jh-Dhm"/>
+                            <outlet property="delegate" destination="vIb-AE-558" id="eTR-ZQ-HRS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Upload Photos" id="VCH-Tx-od0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KXA-vf-RkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1081" y="365"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jaV-N9-17f">
@@ -373,7 +415,7 @@
             </objects>
             <point key="canvasLocation" x="905" y="-1095"/>
         </scene>
-        <!--Show View Controller-->
+        <!--Title-->
         <scene sceneID="UcP-5N-KQP">
             <objects>
                 <collectionViewController id="jPY-wY-5jQ" customClass="ShowViewController" customModule="DropEvent" customModuleProvider="target" sceneMemberID="viewController">
@@ -431,8 +473,16 @@
                             <outlet property="delegate" destination="jPY-wY-5jQ" id="TGo-wN-cf7"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Title" id="GID-0t-PtS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="d8p-Bh-Wj9">
+                            <connections>
+                                <action selector="playPushed:" destination="jPY-wY-5jQ" id="Ho4-0e-vCo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="photoCollectionView" destination="2re-ZS-oTt" id="cYE-Ks-mZi"/>
+                        <outlet property="playButton" destination="d8p-Bh-Wj9" id="xky-Gr-gyt"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5h-DX-1J3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,6 +491,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CcM-0l-mpF"/>
+        <segue reference="ANK-O4-efM"/>
     </inferredMetricsTieBreakers>
 </document>

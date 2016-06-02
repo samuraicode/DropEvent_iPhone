@@ -18,6 +18,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     
     let viewModel = SingleEventViewModel()
     var eventTag = "sample"
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func handleLoaded(result: (Bool)) {
-        print("Success: \(result)")
+        self.activitySpinner.stopAnimating()
         self.collectionView?.reloadData()
     }
     
@@ -94,10 +95,6 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        let headerName = self.viewModel.labelForSection(section).name
-//        if headerName == "" {
-//            return CGSize(width: collectionView.bounds.width, height: 10)
-//        }
         return CGSize(width: collectionView.bounds.width, height: 50)
     }
     

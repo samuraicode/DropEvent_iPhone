@@ -32,14 +32,21 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     // variable keep track that view appear or not.
     // we have to load collection view after view appear so correct cell size achieved.
     var isViewAppear: Bool = false
+    var playMode: Bool = false
+    var timer = NSTimer()
+    
+    @IBOutlet weak var playButton: UIBarButtonItem!
     
     @IBOutlet var photoCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        self.navigationItem.title = self.viewModel.dropevent.name
+        
         
         // Do any additional setup after loading the view.
     }
@@ -56,6 +63,10 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
             photoPath = NSIndexPath.init(forItem: self.photoIndex, inSection: 0)
             self.photoCollectionView.scrollToItemAtIndexPath(photoPath, atScrollPosition: .CenteredHorizontally, animated: false )
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.timer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,9 +121,7 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        let visibleRect = CGRect.init(origin: self.collectionView!.contentOffset, size: self.collectionView!.bounds.size)
-        let visiblePoint = CGPoint.init(x: CGRectGetMidX(visibleRect), y: CGRectGetMidY(visibleRect))
-        photoPath = (self.collectionView?.indexPathForItemAtPoint(visiblePoint))!
+        photoPath = getCurrentPhotoPath()
         self.calculateCellWidthHeight(size)
         self.collectionView?.alpha = CGFloat.init(0)
         self.collectionView!.performBatchUpdates(nil, completion: { (Bool) -> Void in
@@ -124,6 +133,12 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     // MARK: - Utility functions
+    
+    private func getCurrentPhotoPath() -> NSIndexPath {
+        let visibleRect = CGRect.init(origin: self.collectionView!.contentOffset, size: self.collectionView!.bounds.size)
+        let visiblePoint = CGPoint.init(x: CGRectGetMidX(visibleRect), y: CGRectGetMidY(visibleRect))
+        return (self.collectionView?.indexPathForItemAtPoint(visiblePoint))!
+    }
     
     // calculate collection view cell width same as full screen
     private func calculateCellWidthHeight(size: CGSize!) {
@@ -143,6 +158,23 @@ class ShowViewController: UICollectionViewController, UICollectionViewDelegateFl
         } else {
             self.cellHeight -= 64
         }
+    }
+    
+    @IBAction func playPushed(sender: AnyObject) {
+        if playMode {
+            timer.invalidate()
+        } else {
+            moveSlideshow()
+            timer = NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector: #selector(ShowViewController.moveSlideshow), userInfo: nil, repeats: true)
+        }
+        playMode = !playMode
+    }
+    
+    func moveSlideshow() {
+        photoPath = getCurrentPhotoPath()
+        let nextPath = NSIndexPath.init(forItem: photoPath.item + 1, inSection: photoPath.section)
+        print(nextPath.item)
+        photoCollectionView.scrollToItemAtIndexPath(nextPath, atScrollPosition: .CenteredHorizontally, animated: false )
     }
 
     
